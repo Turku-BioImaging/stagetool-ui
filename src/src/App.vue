@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
+import NavigationBar from './components/NavigationBar.vue'
 </script>
 
 <template>
-  <h1>StageTool</h1>
+  <div class="app">
+    <navigation-bar />
 
-  <RouterView />
+    <RouterView />
+  </div>
 </template>
 
-<style></style>
+<style lang='scss'>
+div.app {
+  @apply p-3;
+}
+</style>

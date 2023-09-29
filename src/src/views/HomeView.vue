@@ -4,6 +4,6 @@
 
 <template>
   <main>
-    <p>Some content...</p>
+    
   </main>
 </template>
