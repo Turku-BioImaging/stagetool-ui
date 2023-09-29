@@ -14,5 +14,6 @@ import NavigationBar from './components/NavigationBar.vue'
 <style lang='scss'>
 div.app {
   @apply p-3;
+  height: 100vh;
 }
 </style>

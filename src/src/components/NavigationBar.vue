@@ -38,7 +38,7 @@ export default {
 <style lang="scss">
 div.navigation-bar {
   @apply bg-slate-800;
-  @apply -m-3 p-3;
+  @apply -ml-3 -mr-3 -mt-3 p-3;
 
   div.header {
     @apply flex items-center;
