@@ -4,11 +4,11 @@
       <div class="bars-div pr-2" @click="toggleMenu">
         <i class="uil uil-bars text-3xl"></i>
       </div>
-      <h1>StageTool</h1>
+      <h1><router-link to='/'>StageTool</router-link></h1>
     </div>
-    <div class="menu-items" v-if="menuIsOpen">
+    <div class="menu-items" v-if="menuIsOpen" @click='toggleMenu'>
       <ul>
-        <li>What is StageTool?</li>
+        <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li>Cell Model</li>
         <li>Tubule Model</li>
         <li>Troubleshooting</li>
@@ -39,6 +39,10 @@ export default {
 div.navigation-bar {
   @apply bg-slate-800;
   @apply -ml-3 -mr-3 -mt-3 p-3;
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
 
   div.header {
     @apply flex items-center;
