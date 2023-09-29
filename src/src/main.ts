@@ -1,3 +1,6 @@
+import '@fontsource/source-sans-pro/300.css'
+import '@fontsource/source-sans-pro/600.css'
+
 import './scss/main.scss'
 
 import { createApp } from 'vue'
