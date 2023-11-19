@@ -47,7 +47,7 @@ div.navigation-bar {
   div.header {
     @apply flex items-center;
     h1 {
-      @apply font-semibold uppercase;
+      @apply font-semibold;
       @apply text-2xl;
     }
 
