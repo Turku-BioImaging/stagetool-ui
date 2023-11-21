@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, inject } from 'vue'
+import { ref, onMounted } from 'vue'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
@@ -9,7 +9,7 @@ const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
 
-const taskStore = inject('taskStore') as ReturnType<typeof useTaskStore>
+const taskStore = useTaskStore()
 
 const handleFileChange = (event) => {
   selectedFiles.value = Array.from(event.target.files)

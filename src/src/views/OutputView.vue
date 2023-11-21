@@ -8,7 +8,8 @@ import ImageSelector from '../components/output/ImageSelector.vue'
 import VisualizationViewer from '../components/output/VisualizationViewer.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const store = inject('taskStore') as ReturnType<typeof useTaskStore>
+// const store = inject('taskStore') as ReturnType<typeof useTaskStore>
+const store = useTaskStore()
 </script>
 <template>
   <div class="output-view">

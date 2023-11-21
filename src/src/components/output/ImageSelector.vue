@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
 import { Task } from '../../classes/Task'
-import { useTaskStore } from '../stores/task'
+import { useTaskStore } from '../../stores/task'
 
-const taskStore = inject('taskStore') as ReturnType<typeof useTaskStore>
+const taskStore = useTaskStore()
 
 const handleClick = (idx: number) => {
   taskStore.setSelectedImageIndex(idx)
 }
 </script>
 <script lang="ts">
-export default { name: 'ImageSelector' }
+export default {
+  name: 'ImageSelector'
+}
 </script>
+
 <template>
   <div class="image-selector-component" v-if="taskStore.task.image_sources">
     <div class="grid grid-cols-3 gap-2">

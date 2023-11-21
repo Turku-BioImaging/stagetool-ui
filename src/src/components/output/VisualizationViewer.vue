@@ -2,7 +2,7 @@
 import { ref, onMounted, watch, computed, inject } from 'vue'
 import { useTaskStore } from '../../stores/task'
 
-const store = inject('taskStore')
+const store = useTaskStore()
 
 let visImgSrc = computed(() => store.task.visualization_sources[store.selectedImageIndex])
 </script>
