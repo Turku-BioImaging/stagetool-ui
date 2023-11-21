@@ -25,7 +25,7 @@ export class Task {
     // this._apiClient = new StageToolClient()
     this.id = data.id || ''
     this.status =
-      TaskStatus[data.status as unknown as keyof typeof TaskStatus] || TaskStatus.Pending
+    TaskStatus[data.status.charAt(0).toUpperCase() + data.status.slice(1) as keyof typeof TaskStatus]
     this.image_filenames = data.image_filenames || []
     this.visualization_filenames = data.visualization_filenames || []
     this.results = data.results || []
@@ -41,7 +41,7 @@ export class Task {
       const data = await StageToolClient.getTask(this.id)
       this.id = data.id
       this.status =
-        TaskStatus[data.status as string as keyof typeof TaskStatus] || TaskStatus.Pending
+        TaskStatus[data.status.charAt(0).toUpperCase() + data.status.slice(1) as keyof typeof TaskStatus]
 
       this.image_filenames = data.image_filenames
       this.visualization_filenames = data.visualization_filenames

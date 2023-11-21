@@ -37,6 +37,12 @@ onMounted(async () => {
 })
 </script>
 
+<script lang="ts">
+export default {
+  name: 'HomeView'
+}
+</script>
+
 <template>
   <div class="home-view">
     <div class="upload-container">
