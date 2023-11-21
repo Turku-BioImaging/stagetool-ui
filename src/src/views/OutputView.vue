@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount, watch, computed } from 'vue'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { TaskStatus } from '../classes/TaskStatus'
@@ -8,17 +7,15 @@ import ImageSelector from '../components/output/ImageSelector.vue'
 import VisualizationViewer from '../components/output/VisualizationViewer.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const { task, setTask } = useTaskStore()
-
-
+const store = useTaskStore()
 </script>
 <template>
   <div class="output-view">
     <section class="image-selector">
-      <ImageSelector v-if="task && task.image_sources" />
+      <ImageSelector v-if="store.task && store.task.image_sources" />
     </section>
     <section class="vis-viewer-section mt-4">
-      <VisualizationViewer v-if="task && task.visualization_sources" />
+      <VisualizationViewer v-if="store.task && store.task.visualization_sources" />
     </section>
 
     <section class="tubule-classifications">tubule classifications</section>

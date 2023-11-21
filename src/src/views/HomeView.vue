@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
@@ -9,8 +9,7 @@ const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
 
-let task = ref(null)
-const { task: storeTask, setTask, clearTask } = useTaskStore()
+const taskStore = inject('taskStore')
 
 const handleFileChange = (event) => {
   selectedFiles.value = Array.from(event.target.files)
@@ -18,18 +17,15 @@ const handleFileChange = (event) => {
 }
 
 const handleUpload = async () => {
-  task = await TaskUploader.upload(selectedFiles.value)
-  setTask(task)
+  let task = await TaskUploader.upload(selectedFiles.value)
+  taskStore.setTask(task)
 }
 
 onMounted(async () => {
   const staticTaskId = import.meta.env.VITE_STATIC_TASK_ID
   if (staticTaskId) {
     try {
-      task = await StageToolClient.getTask(staticTaskId)
-      setTask(task)
-
-      router.push(`/output/${task.id}`)
+      router.push(`/output/${staticTaskId}`)
     } catch (error) {
       console.error('Error fetching task:', error)
     }

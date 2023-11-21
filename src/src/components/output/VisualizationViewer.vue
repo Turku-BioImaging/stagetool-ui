@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from 'vue'
+import { ref, onMounted, watch, computed, inject } from 'vue'
 import { useTaskStore } from '../../stores/task'
-// import { Task } from '../../classes/Task'
 
-const { task, setTask, selectedImageIndex } = useTaskStore()
+const store = inject('taskStore')
 
-let visImgSrc = computed(() => task.visualization_sources[selectedImageIndex])
+let visImgSrc = computed(() => store.task.visualization_sources[store.selectedImageIndex])
+</script>
 
-watch(() => selectedImageIndex, () => {
-  // visImgSrc.value = task.visualization_sources[selectedImageIndex]
-  console.log(selectedImageIndex)
-})
-
-
+<script lang="ts">
+export default {
+  name: 'VisualizationViewer'
+}
 </script>
 
 <template>
-  <div class="vis-viewer-component"><img :src="visImgSrc" alt="" /></div>
+  <div class="vis-viewer-component">
+    <img :src="visImgSrc" alt="" />
+  </div>
 </template>
-
