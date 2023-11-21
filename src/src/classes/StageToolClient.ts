@@ -18,8 +18,6 @@ export class StageToolClient {
       }
     })
 
-    // return response.data
-    // console.log(response.data)
     const task = new Task(response.data)
     return task
   }
