@@ -9,7 +9,7 @@ const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
 
-const taskStore = inject('taskStore')
+const taskStore = inject('taskStore') as ReturnType<typeof useTaskStore>
 
 const handleFileChange = (event) => {
   selectedFiles.value = Array.from(event.target.files)

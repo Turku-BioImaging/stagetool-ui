@@ -20,13 +20,11 @@ export const useTaskStore = defineStore('taskStore', () => {
     task.value = null
   }
 
-
   return {
     task,
     setTask,
     clearTask,
     selectedImageIndex,
     setSelectedImageIndex
-
   }
 })

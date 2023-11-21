@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject } from 'vue'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { TaskStatus } from '../classes/TaskStatus'
@@ -7,7 +8,7 @@ import ImageSelector from '../components/output/ImageSelector.vue'
 import VisualizationViewer from '../components/output/VisualizationViewer.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const store = useTaskStore()
+const store = inject('taskStore') as ReturnType<typeof useTaskStore>
 </script>
 <template>
   <div class="output-view">
