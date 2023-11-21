@@ -6,9 +6,9 @@ import { TaskStatus } from '../classes/TaskStatus'
 import { Task } from '../classes/Task'
 import ImageSelector from '../components/output/ImageSelector.vue'
 import VisualizationViewer from '../components/output/VisualizationViewer.vue'
+import TubuleClassification from '../components/output/TubuleClassification.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-// const store = inject('taskStore') as ReturnType<typeof useTaskStore>
 const store = useTaskStore()
 </script>
 <template>
@@ -20,7 +20,9 @@ const store = useTaskStore()
       <VisualizationViewer v-if="store.task && store.task.visualization_sources" />
     </section>
 
-    <section class="tubule-classifications">tubule classifications</section>
+    <section class="tubule-classifications mt-4">
+      <TubuleClassification v-if="store.task && store.task.results" />
+    </section>
     <section class="tubule-data">tubule data</section>
     <section class="downloads-section">downloads section</section>
   </div>
