@@ -7,6 +7,7 @@ import { Task } from '../classes/Task'
 import ImageSelector from '../components/output/ImageSelector.vue'
 import VisualizationViewer from '../components/output/VisualizationViewer.vue'
 import TubuleClassification from '../components/output/TubuleClassification.vue'
+import TubuleDataTable from '../components/output/TubuleDataTable.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const store = useTaskStore()
@@ -23,8 +24,10 @@ const store = useTaskStore()
     <section class="tubule-classifications mt-4">
       <TubuleClassification v-if="store.task && store.task.results" />
     </section>
-    <section class="tubule-data">tubule data</section>
-    <section class="downloads-section">downloads section</section>
+    <section class="tubule-data-tables mt-4">
+      <TubuleDataTable v-if="store.task && store.task.results" />
+    </section>
+    <!-- <section class="downloads-section">downloads section</section> -->
   </div>
 </template>
 
