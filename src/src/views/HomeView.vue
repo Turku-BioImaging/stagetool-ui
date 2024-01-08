@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
-
+import WaitSpinner from '../components/WaitSpinner.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
@@ -19,7 +19,25 @@ const handleFileChange = (event) => {
 const handleUpload = async () => {
   let task = await TaskUploader.upload(selectedFiles.value)
   taskStore.setTask(task)
+
+  showWaitSpinner.value = true
+
+  intervalId = setInterval(async () => {
+    let fetchedTask = await StageToolClient.getTask(task.id.toString())
+    await fetchedTask.populate()
+    // await fetchedTask.getImages()
+    // await fetchedTask.getVisualizations()
+    await taskStore.setTask(fetchedTask)
+    console.log(taskStore.task.status)
+  }, 5000)
 }
+
+const fetchTask = async (taskId) => {
+  let task = await StageToolClient.getTask(taskId)
+  taskStore.setTask(task)
+}
+
+const showWaitSpinner = ref(false)
 
 onMounted(async () => {
   const staticTaskId = import.meta.env.VITE_STATIC_TASK_ID
@@ -31,10 +49,25 @@ onMounted(async () => {
     }
   }
 })
+
+let intervalId = null
+
+watch(
+  () => taskStore.task?.status,
+  async (newStatus) => {
+    if (newStatus === 'completed') {
+      clearInterval(intervalId)
+      await taskStore.task.getImages()
+      await taskStore.task.getVisualizations()
+      router.push(`/output/${taskStore.task.id}`)
+    }
+  }
+)
 </script>
 
 <script lang="ts">
 export default {
+  components: { WaitSpinner },
   name: 'HomeView'
 }
 </script>
@@ -59,6 +92,10 @@ export default {
         <li>DAPI or related chromatin staining</li>
       </ul>
     </div>
+
+    <transition name="fade">
+      <wait-spinner v-if="showWaitSpinner"></wait-spinner>
+    </transition>
   </div>
 </template>
 
@@ -89,6 +126,15 @@ div.home-view {
       list-style-type: square;
       @apply ml-6;
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
   }
 }
 </style>
