@@ -1,5 +1,7 @@
-import { TaskStatus } from './TaskStatus'
+// import { TaskStatus } from './TaskStatus'
 import { StageToolClient } from './StageToolClient'
+
+type TaskStatus = 'pending' | 'completed'
 
 export class Task {
   id: string
@@ -24,8 +26,7 @@ export class Task {
   constructor(data: any = {}) {
     // this._apiClient = new StageToolClient()
     this.id = data.id || ''
-    this.status =
-    TaskStatus[data.status.charAt(0).toUpperCase() + data.status.slice(1) as keyof typeof TaskStatus]
+    this.status = data.status || 'pending'
     this.image_filenames = data.image_filenames || []
     this.visualization_filenames = data.visualization_filenames || []
     this.results = data.results || []
@@ -40,8 +41,7 @@ export class Task {
       // const data = await this._apiClient.getTask(this.id)
       const data = await StageToolClient.getTask(this.id)
       this.id = data.id
-      this.status =
-        TaskStatus[data.status.charAt(0).toUpperCase() + data.status.slice(1) as keyof typeof TaskStatus]
+      this.status = data.status
 
       this.image_filenames = data.image_filenames
       this.visualization_filenames = data.visualization_filenames
