@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, defineEmits } from 'vue'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
+import SampleImageGrid from '../components/SampleImageGrid.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
+const handleDemoImageClicked = async (imageSrc) => {
+  const response = await fetch(imageSrc)
+  const data = await response.blob()
+  const metadata = { type: data.type }
+  const url = new URL(imageSrc)
+  const filename = url.pathname.split('/').pop()
+  const file = new File([data], filename, metadata)
+  selectedFiles.value = Array.from([file])
+
+  handleUpload()
+}
 
 const taskStore = useTaskStore()
 
@@ -25,8 +37,6 @@ const handleUpload = async () => {
   intervalId = setInterval(async () => {
     let fetchedTask = await StageToolClient.getTask(task.id.toString())
     await fetchedTask.populate()
-    // await fetchedTask.getImages()
-    // await fetchedTask.getVisualizations()
     await taskStore.setTask(fetchedTask)
     console.log(taskStore.task.status)
   }, 5000)
@@ -67,15 +77,16 @@ watch(
 
 <script lang="ts">
 export default {
-  components: { WaitSpinner },
+  components: { SampleImageGrid, WaitSpinner },
   name: 'HomeView'
 }
 </script>
 
 <template>
   <div class="home-view">
-    <div class="upload-container">
-      <h2>Upload your images</h2>
+    <sample-image-grid @imageSelected="handleDemoImageClicked" />
+    <div class="upload-container mt-6">
+      <h2>Upload your own images</h2>
       <input type="file" accept="image/tiff, image/png" multiple @change="handleFileChange" /><br />
       <div class="text-center">
         <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
@@ -115,7 +126,7 @@ div.home-view {
     }
 
     button {
-      @apply text-center bg-slate-500 w-1/3 p-2 mt-4;
+      @apply text-center font-semibold bg-cyan-400 w-1/3 p-2 mt-4;
     }
   }
 
