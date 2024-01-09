@@ -84,6 +84,14 @@ export default {
 
 <template>
   <div class="home-view">
+    <section class="intro-section">
+      <h1 class="text-2xl font-semibold text-center">StageTool</h1>
+      <p class="mt-3 mb-12 text-center">
+        StageTool is an automated approach for identification of mouse seminiferous epithelial cell
+        types and stages based on fluorescent chromating labeling.
+      </p>
+    </section>
+
     <sample-image-grid @imageSelected="handleDemoImageClicked" />
     <div class="upload-container mt-6">
       <h2>Upload your own images</h2>
