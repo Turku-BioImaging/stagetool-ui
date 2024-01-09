@@ -6,6 +6,7 @@ import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
 import SampleImageGrid from '../components/SampleImageGrid.vue'
+import CitationInfo from '../components/CitationInfo.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref([])
@@ -112,6 +113,8 @@ export default {
       </div>
     </div>
 
+    <citation-info></citation-info>
+
     <transition name="fade">
       <wait-spinner v-if="showWaitSpinner"></wait-spinner>
     </transition>
@@ -120,7 +123,7 @@ export default {
 
 <style lang="scss">
 div.home-view {
-  @apply h-full;
+  // @apply h-full;
   @apply flex flex-col justify-center;
 
   div.upload-container {
