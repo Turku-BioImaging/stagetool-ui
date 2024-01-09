@@ -37,8 +37,9 @@ export default {
 
 <style lang="scss">
 div.navigation-bar {
-  @apply bg-slate-800;
-  @apply -ml-3 -mr-3 -mt-3 p-3;
+  @apply bg-slate-900;
+  @apply border-b border-slate-800;
+  @apply px-3 py-2;
   position: sticky;
   left: 0;
   right: 0;
@@ -48,7 +49,7 @@ div.navigation-bar {
     @apply flex items-center;
     h1 {
       @apply font-semibold;
-      @apply text-2xl;
+      @apply text-xl;
     }
 
     div.bars-div {

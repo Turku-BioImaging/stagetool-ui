@@ -15,7 +15,7 @@ export default {
 <template>
   <div class="sample-image-grid">
     <div class="image-grid-container">
-      <h2>Select a demo image</h2>
+      <h2>Try a demo image</h2>
       <ul>
         <li><img @click="sendImageSrc" src="@/assets/sample-images/01.png" alt="" /></li>
         <li><img @click="sendImageSrc" src="@/assets/sample-images/02.png" alt="" /></li>
@@ -29,9 +29,12 @@ export default {
 </template>
 <style lang="scss">
 div.sample-image-grid {
+
+  @apply p-6;
+
   div.image-grid-container {
     h2 {
-      @apply text-2xl font-semibold text-center mb-4;
+      @apply text-2xl text-center mb-4;
     }
     ul {
       @apply grid grid-cols-3 gap-2;

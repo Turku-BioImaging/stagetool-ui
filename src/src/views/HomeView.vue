@@ -84,9 +84,9 @@ export default {
 
 <template>
   <div class="home-view">
-    <section class="intro-section">
+    <section class="intro-section border-slate-800 border-b p-12">
       <h1 class="text-2xl font-semibold text-center">StageTool</h1>
-      <p class="mt-3 mb-12 text-center">
+      <p class="mt-3 text-center">
         StageTool is an automated approach for identification of mouse seminiferous epithelial cell
         types and stages based on fluorescent chromating labeling.
       </p>
@@ -99,17 +99,17 @@ export default {
       <div class="text-center">
         <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
       </div>
-    </div>
-    <div class="info-div">
-      <p>
-        <span class="font-semibold">Image requirements</span>
-      </p>
+      <div class="info-div">
+        <p>
+          <span class="font-semibold">Image requirements</span>
+        </p>
 
-      <ul>
-        <li>1024 * 1024</li>
-        <li>400x magnification</li>
-        <li>DAPI or related chromatin staining</li>
-      </ul>
+        <ul>
+          <li>1024 * 1024</li>
+          <li>400x magnification</li>
+          <li>DAPI or related chromatin staining</li>
+        </ul>
+      </div>
     </div>
 
     <transition name="fade">
@@ -124,9 +124,9 @@ div.home-view {
   @apply flex flex-col justify-center;
 
   div.upload-container {
-    @apply bg-slate-800 p-4;
+    @apply bg-slate-800 p-8;
     h2 {
-      @apply text-2xl font-semibold mb-4 text-center;
+      @apply text-2xl mb-4 text-center;
     }
 
     input {
@@ -134,7 +134,7 @@ div.home-view {
     }
 
     button {
-      @apply text-center font-semibold bg-cyan-400 w-1/3 p-2 mt-4;
+      @apply text-center font-semibold bg-cyan-400 text-white w-1/3 p-2 mt-4;
     }
   }
 
