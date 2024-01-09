@@ -3,7 +3,7 @@
     <flower-spinner :animation-duration="2500" :size="85" color="#cbd5e1" />
 
     <h2 class='font-semibold text-lg mt-6'>Please wait...</h2>
-    <p class='text-center'>StageTool is processing your images. <br>This can take up to a minute.</p>
+    <p class='text-center'>StageTool is processing your images. <br>This can take several minutes.</p>
   </div>
 </template>
 
