@@ -31,6 +31,8 @@ const store = useTaskStore()
   </div>
 </template>
 
-<style scoped>
-/* Your component styles here */
+<style lang='scss'>
+div.output-view {
+  @apply p-3;
+}
 </style>
