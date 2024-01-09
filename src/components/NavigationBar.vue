@@ -84,5 +84,9 @@ div.navigation-bar {
   &.menu-is-open {
     @apply bg-slate-800;
   }
+
+  &.menu-is-closed {
+    @apply bg-slate-900;
+  }
 }
 </style>
