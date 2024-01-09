@@ -1,12 +1,16 @@
 <template>
-  <div class="navigation-bar">
+  <div
+    class="navigation-bar"
+    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen }"
+    @click.stop
+  >
     <div class="header">
       <div class="bars-div pr-2" @click="toggleMenu">
         <i class="uil uil-bars text-3xl"></i>
       </div>
-      <h1><router-link to='/'>StageTool</router-link></h1>
+      <h1><router-link to="/">StageTool</router-link></h1>
     </div>
-    <div class="menu-items" v-if="menuIsOpen" @click='toggleMenu'>
+    <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
       <ul>
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li>Cell Model</li>
@@ -30,14 +34,23 @@ export default {
   methods: {
     toggleMenu() {
       this.menuIsOpen = !this.menuIsOpen
+    },
+    closeMenu() {
+      this.menuIsOpen = false
     }
+  },
+  mounted() {
+    window.addEventListener('click', this.closeMenu)
+  },
+  beforeDestroy() {
+    window.removeEventListener('click', this.closeMenu)
   }
 }
 </script>
 
 <style lang="scss">
 div.navigation-bar {
-  @apply bg-slate-900;
+  // @apply bg-slate-900;
   @apply border-b border-slate-800;
   @apply px-3 py-2;
   position: sticky;
@@ -66,6 +79,10 @@ div.navigation-bar {
         @apply pb-2;
       }
     }
+  }
+
+  &.menu-is-open {
+    @apply bg-slate-800;
   }
 }
 </style>
