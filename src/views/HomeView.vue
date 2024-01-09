@@ -85,7 +85,7 @@ export default {
 
 <template>
   <div class="home-view">
-    <section class="intro-section border-slate-800 border-b p-12">
+    <section class="intro-section border-slate-800 border-b p-12 pt-24">
       <h1 class="text-2xl font-semibold text-center">StageTool</h1>
       <p class="mt-3 text-center">
         StageTool is an automated approach for identification of mouse seminiferous epithelial cell

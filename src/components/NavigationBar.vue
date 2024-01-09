@@ -1,14 +1,14 @@
 <template>
   <div
     class="navigation-bar"
-    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen }"
+    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen, 'is-top': isTop }"
     @click.stop
   >
     <div class="header">
       <div class="bars-div pr-2" @click="toggleMenu">
         <i class="uil uil-bars text-3xl"></i>
       </div>
-      <h1><router-link to="/">StageTool</router-link></h1>
+      <h1 v-show="!isTop"><router-link to="/">StageTool</router-link></h1>
     </div>
     <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
       <ul>
@@ -28,7 +28,8 @@
 export default {
   data() {
     return {
-      menuIsOpen: false
+      menuIsOpen: false,
+      isTop: true
     }
   },
   methods: {
@@ -37,13 +38,19 @@ export default {
     },
     closeMenu() {
       this.menuIsOpen = false
+    },
+    checkScroll() {
+      this.isTop = window.pageYOffset <= 50
     }
   },
   mounted() {
     window.addEventListener('click', this.closeMenu)
+    window.addEventListener('scroll', this.checkScroll)
+    this.checkScroll()
   },
   beforeDestroy() {
     window.removeEventListener('click', this.closeMenu)
+    window.removeEventListener('scroll', this.checkScroll)
   }
 }
 </script>
@@ -53,7 +60,7 @@ div.navigation-bar {
   // @apply bg-slate-900;
   @apply border-b border-slate-800;
   @apply px-3 py-2;
-  position: sticky;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -67,6 +74,7 @@ div.navigation-bar {
 
     div.bars-div {
       cursor: pointer;
+      @apply text-cyan-500;
     }
   }
 
@@ -87,6 +95,11 @@ div.navigation-bar {
 
   &.menu-is-closed {
     @apply bg-slate-900;
+  }
+
+  &.is-top {
+    @apply bg-slate-900;
+    @apply border-none;
   }
 }
 </style>
