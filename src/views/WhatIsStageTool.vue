@@ -41,22 +41,32 @@
     </p>
     <h2>Limitations</h2>
     <p>
-        STAGETOOL has been trained and validated on data derived from the mouse testis and therefore performs optimally only on images of mouse seminiferous tubule cross-sections. Given  the conservation of cytological features in distinct germ cell types across species, the cell model may provide useful data also on images from other mammalian species (such as rat and human), but stage identification cannot be used in that context. STAGETOOL performs well even on cross-sections from with a spermtogenic defect (such as haploid block or impaired morphogenesis of spermatid head). However, if spermtogenesis is severely affected, the data produced by STAGETOOL should be interpreted with caution.
-
+      STAGETOOL has been trained and validated on data derived from the mouse testis and therefore
+      performs optimally only on images of mouse seminiferous tubule cross-sections. Given the
+      conservation of cytological features in distinct germ cell types across species, the cell
+      model may provide useful data also on images from other mammalian species (such as rat and
+      human), but stage identification cannot be used in that context. STAGETOOL performs well even
+      on cross-sections from with a spermtogenic defect (such as haploid block or impaired
+      morphogenesis of spermatid head). However, if spermtogenesis is severely affected, the data
+      produced by STAGETOOL should be interpreted with caution.
     </p>
     <p>
-        For optimal performance, make sure your image is of correct size (1024x1024 pixels), not overexposed  (the number of saturated pixels should be kept x%) and representing xx% of any single tubule cross-section. It is critically importnt to use ⨯400 magnification (10⨯ ocular plus 40⨯ objective). Also, use of transverse sections and avoid longitudinal sections because they might host more than one stage. 
+      For optimal performance, make sure your image is of correct size (1024x1024 pixels), not
+      overexposed (the number of saturated pixels should be kept x%) and representing xx% of any
+      single tubule cross-section. It is critically importnt to use ⨯400 magnification (10⨯ ocular
+      plus 40⨯ objective). Also, use of transverse sections and avoid longitudinal sections because
+      they might host more than one stage.
     </p>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {}
 </script>
 
 <style lang="scss">
 div.what-is-stagetool {
-    @apply py-6;
+  @apply py-6;
 
   h1 {
     @apply mb-4 font-semibold text-xl;

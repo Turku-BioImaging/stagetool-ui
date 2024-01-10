@@ -2,12 +2,14 @@
   <div class="wait-spinner">
     <flower-spinner :animation-duration="2500" :size="85" color="#cbd5e1" />
 
-    <h2 class='font-semibold text-lg mt-6'>Please wait...</h2>
-    <p class='text-center'>StageTool is processing your images. <br>This can take several minutes.</p>
+    <h2 class="font-semibold text-lg mt-6">Please wait...</h2>
+    <p class="text-center">
+      StageTool is processing your images. <br />This can take several minutes.
+    </p>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // import GridLoader from 'vue-spinner/src/GridLoader.vue'
 import { FlowerSpinner } from 'epic-spinners'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, defineEmits } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
@@ -9,13 +9,13 @@ import SampleImageGrid from '../components/SampleImageGrid.vue'
 import CitationInfo from '../components/CitationInfo.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
-const selectedFiles = ref([])
-const handleDemoImageClicked = async (imageSrc) => {
+const selectedFiles = ref<File[]>([])
+const handleDemoImageClicked = async (imageSrc: string) => {
   const response = await fetch(imageSrc)
   const data = await response.blob()
   const metadata = { type: data.type }
   const url = new URL(imageSrc)
-  const filename = url.pathname.split('/').pop()
+  const filename = url.pathname.split('/').pop() || ''
   const file = new File([data], filename, metadata)
   selectedFiles.value = Array.from([file])
 
@@ -24,8 +24,9 @@ const handleDemoImageClicked = async (imageSrc) => {
 
 const taskStore = useTaskStore()
 
-const handleFileChange = (event) => {
-  selectedFiles.value = Array.from(event.target.files)
+const handleFileChange = (event: Event) => {
+  // selectedFiles.value = Array.from(event.target?.files)
+  selectedFiles.value = Array.from((event.target as HTMLInputElement).files || [])
   uploadButtonEnabled.value = selectedFiles.value.length > 0
 }
 
@@ -39,13 +40,8 @@ const handleUpload = async () => {
     let fetchedTask = await StageToolClient.getTask(task.id.toString())
     await fetchedTask.populate()
     await taskStore.setTask(fetchedTask)
-    console.log(taskStore.task.status)
-  }, 5000)
-}
-
-const fetchTask = async (taskId) => {
-  let task = await StageToolClient.getTask(taskId)
-  taskStore.setTask(task)
+    // console.log(taskStore.task.status)
+  }, 5000) as unknown as number
 }
 
 const showWaitSpinner = ref(false)
@@ -61,16 +57,16 @@ onMounted(async () => {
   }
 })
 
-let intervalId = null
+let intervalId: number | null = null
 
 watch(
   () => taskStore.task?.status,
   async (newStatus) => {
     if (newStatus === 'completed') {
-      clearInterval(intervalId)
-      await taskStore.task.getImages()
-      await taskStore.task.getVisualizations()
-      router.push(`/output/${taskStore.task.id}`)
+      if (intervalId !== null) clearInterval(intervalId)
+      await taskStore.task?.getImages()
+      await taskStore.task?.getVisualizations()
+      router.push(`/output/${taskStore.task?.id}`)
     }
   }
 )

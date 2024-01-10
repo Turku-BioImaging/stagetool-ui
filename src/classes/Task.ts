@@ -3,26 +3,26 @@ import { StageToolClient } from './StageToolClient'
 type TaskStatus = 'pending' | 'completed'
 
 interface Cell {
-  boxes: number[][];
-  labels: string[];
-  scores: number[];
+  boxes: number[][]
+  labels: string[]
+  scores: number[]
 }
 
-interface Tubule {
-  box: number[];
-  cells: Cell;
-  contours: number[][];
-  id: number;
-  label: string;
-  score: number;
+export interface Tubule {
+  box: number[]
+  cells: Cell
+  contours: number[][]
+  id: number
+  label: string
+  score: number
 }
 
 interface ImageResult {
-  tubules: Tubule[];
+  tubules: Tubule[]
 }
 
 interface Results {
-  [key: string]: ImageResult;
+  [key: string]: ImageResult
 }
 
 interface TaskData {
@@ -112,7 +112,7 @@ export class Task {
    * Retrieves the visualizations for the task.
    * @returns A promise that resolves to an array of strings representing the visualization sources.
    */
-  async getVisualizations(): Promise<string[]> {
+  async getVisualizations(): Promise<string[] | null> {
     const filenames = this.visualization_filenames
     if (this.visualization_sources.length == this.visualization_filenames?.length) {
       return this.visualization_sources
@@ -122,7 +122,7 @@ export class Task {
     const filenamesArray = Array.isArray(filenames) ? filenames : [filenames]
 
     const visualizationPromises = filenamesArray.map(async (filename) => {
-      const response = await StageToolClient.getVisualization(taskId, filename)
+      const response = await StageToolClient.getVisualization(taskId, filename as string)
 
       const blob = new Blob([response.data], { type: response.headers['content-type'] })
 

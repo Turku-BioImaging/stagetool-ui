@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vue-router'
-import {inject} from 'vue'
+import { inject } from 'vue'
 import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
-import { useTaskStore } from '../stores/task'
+// import { useTaskStore } from '../stores/task'
 import { StageToolClient } from '@/classes/StageToolClient'
 
 const router = createRouter({
@@ -27,11 +27,9 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: any) => {
-
   if (to.name === 'output') {
     const taskId = to.params.id
-    // const { setTask } = useTaskStore()
-    const store = inject('taskStore')
+    const store: any = inject('taskStore')
     try {
       let fetchedTask = await StageToolClient.getTask(taskId.toString())
       await fetchedTask.populate()

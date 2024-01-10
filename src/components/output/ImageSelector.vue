@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="image-selector-component" v-if="taskStore.task.image_sources">
+  <div class="image-selector-component" v-if="taskStore.task?.image_sources">
     <div class="grid grid-cols-3 gap-2">
       <div
         class="image-item"
@@ -25,7 +25,7 @@ export default {
       >
         <img :src="imgSrc" alt="" />
         <p class="mt-2 font-semibold text-xs text-center">
-          {{ taskStore.task.image_filenames[idx] }}
+          {{ taskStore.task?.image_filenames[idx] }}
         </p>
       </div>
     </div>

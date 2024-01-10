@@ -4,7 +4,7 @@ import { useTaskStore } from '../../stores/task'
 
 const store = useTaskStore()
 
-let visImgSrc = computed(() => store.task.visualization_sources[store.selectedImageIndex])
+let visImgSrc = computed(() => store.task?.visualization_sources?.[store.selectedImageIndex])
 </script>
 
 <script lang="ts">

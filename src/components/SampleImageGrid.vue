@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, defineEmits } from 'vue'
-
 const emit = defineEmits(['imageSelected'])
 
-const sendImageSrc = (event) => {
-  emit('imageSelected', event.target.src)
+const sendImageSrc = (event: Event) => {
+  emit('imageSelected', (event.target as HTMLImageElement).src)
 }
 </script>
 <script lang="ts">
@@ -29,7 +27,6 @@ export default {
 </template>
 <style lang="scss">
 div.sample-image-grid {
-
   @apply p-6;
 
   div.image-grid-container {
