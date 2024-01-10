@@ -1,14 +1,45 @@
-// import { TaskStatus } from './TaskStatus'
 import { StageToolClient } from './StageToolClient'
 
 type TaskStatus = 'pending' | 'completed'
 
-export class Task {
+interface Cell {
+  boxes: number[][];
+  labels: string[];
+  scores: number[];
+}
+
+interface Tubule {
+  box: number[];
+  cells: Cell;
+  contours: number[][];
+  id: number;
+  label: string;
+  score: number;
+}
+
+interface ImageResult {
+  tubules: Tubule[];
+}
+
+interface Results {
+  [key: string]: ImageResult;
+}
+
+interface TaskData {
   id: string
   status: TaskStatus
   image_filenames: string[]
-  visualization_filenames: string[]
-  results: string[]
+  visualization_filenames?: string[]
+  results?: Results
+}
+
+export class Task {
+  readonly id: string
+  status: TaskStatus
+  image_filenames: string[]
+  visualization_filenames?: string[]
+  // results: string[]
+  results?: Results
   image_sources: string[] = []
   visualization_sources: string[] = []
   // private _apiClient: StageToolClient
@@ -23,13 +54,12 @@ export class Task {
    *   - visualizations: An array of visualization filenames associated with the task.
    *   - results: An array of results associated with the task.
    */
-  constructor(data: any = {}) {
-    // this._apiClient = new StageToolClient()
-    this.id = data.id || ''
+  constructor(data: TaskData) {
+    this.id = data.id
     this.status = data.status || 'pending'
     this.image_filenames = data.image_filenames || []
     this.visualization_filenames = data.visualization_filenames || []
-    this.results = data.results || []
+    this.results = data.results || {}
   }
 
   /**
@@ -38,9 +68,8 @@ export class Task {
    */
   async populate() {
     try {
-      // const data = await this._apiClient.getTask(this.id)
-      const data = await StageToolClient.getTask(this.id)
-      this.id = data.id
+      const data = <TaskData>await StageToolClient.getTask(this.id)
+      // this.id = data.id
       this.status = data.status
 
       this.image_filenames = data.image_filenames
@@ -85,7 +114,7 @@ export class Task {
    */
   async getVisualizations(): Promise<string[]> {
     const filenames = this.visualization_filenames
-    if (this.visualization_sources.length == this.visualization_filenames.length) {
+    if (this.visualization_sources.length == this.visualization_filenames?.length) {
       return this.visualization_sources
     }
 
