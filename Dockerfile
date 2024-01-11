@@ -16,3 +16,10 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+LABEL org.opencontainers.image.title="StageTool UI" \
+    org.opencontainers.image.description="StageTool web interface" \
+    org.opencontainers.image.version="0.1.0" \
+    org.opencontainers.image.source="https://github.com/turku-bioimaging/stagetool-ui" \
+    org.opencontainers.image.documentation="https://github.com/turku-bioimaging/stagetool-ui" \
+    org.opencontainers.image.maintainer="Junel Solis <image-data@bioimaging.fi>"
