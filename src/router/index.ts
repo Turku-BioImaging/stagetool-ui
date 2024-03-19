@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/what-is-stagetool',
       name: 'what-is-stagetool',
       component: () => import('../views/WhatIsStageTool.vue')
+    },
+    {
+      path: '/cell-model',
+      name: 'cell-model',
+      component: () => import('../views/CellModel.vue')
     }
   ]
 })
