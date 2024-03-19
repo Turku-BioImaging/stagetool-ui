@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vu
 import { inject } from 'vue'
 import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
+// import CellModel from '../views/CellModel.vue'
 // import { useTaskStore } from '../stores/task'
 import { StageToolClient } from '@/classes/StageToolClient'
 

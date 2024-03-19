@@ -13,7 +13,7 @@
     <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
       <ul>
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
-        <li>Cell Model</li>
+        <li><router-link to="/cell-model">Cell Model</router-link></li>
         <li>Tubule Model</li>
         <li>Troubleshooting</li>
         <li>Whole-testis analysis & expression profiling</li>
