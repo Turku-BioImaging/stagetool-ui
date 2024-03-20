@@ -21,7 +21,7 @@ export default {
 </script>
 <style lang="scss">
 div.overlay-info-component {
-  @apply bg-slate-900;
+  @apply bg-black;
   @apply w-full h-full;
   @apply fixed top-0 left-0;
   @apply px-6 py-8;
@@ -30,6 +30,7 @@ div.overlay-info-component {
 
   div.image-div {
     @apply mt-6;
+    @apply px-12;
     ul {
       li {
         p {
