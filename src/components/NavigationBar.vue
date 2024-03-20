@@ -57,10 +57,9 @@ export default {
 
 <style lang="scss">
 div.navigation-bar {
-  // @apply bg-slate-900;
   @apply border-b border-slate-800;
+  @apply px-3 py-3;
   position: sticky;
-  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -85,6 +84,11 @@ div.navigation-bar {
       @apply pt-3 pl-3;
       li {
         @apply pb-2;
+
+        a {
+          @apply text-white;
+          font-style: normal !important;
+        }
       }
     }
   }
