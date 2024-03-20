@@ -13,7 +13,7 @@
         </li>
         <li @click="overlays.stageNineVisible = true">
           <img src="~@/assets/tubule-stages/9.png" alt="" />
-          <p>Stages IX</p>
+          <p>Stage IX</p>
         </li>
         <li @click="overlays.stageTenVisible = true">
           <img src="~@/assets/tubule-stages/10_11.png" alt="" />
@@ -21,7 +21,7 @@
         </li>
         <li @click="overlays.stageTwelveVisible = true">
           <img src="~@/assets/tubule-stages/12.png" alt="" />
-          <p>Stages XII</p>
+          <p>Stage XII</p>
         </li>
       </ul>
       <div class="tubule-description">

@@ -30,6 +30,7 @@ div.overlay-info-component {
 
   div.image-div {
     @apply mt-6;
+    @apply px-12;
     ul {
       li {
         p {
