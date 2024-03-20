@@ -8,11 +8,11 @@
           <p>Stages I-V</p>
         </li>
         <li>
-          <img src="~@/assets/tubule-stages/2_5.jpg" alt="" />
+          <img src="~@/assets/tubule-stages/7_8.png" alt="" />
           <p>Stages VI-VIII</p>
         </li>
         <li>
-          <img src="~@/assets/tubule-stages/9_early.png" alt="" />
+          <img src="~@/assets/tubule-stages/9.png" alt="" />
           <p>Stages IX</p>
         </li>
         <li>
