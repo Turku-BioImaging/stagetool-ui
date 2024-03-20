@@ -2,8 +2,9 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vu
 import { inject } from 'vue'
 import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
-// import { useTaskStore } from '../stores/task'
+import WhatIsStageTool from '../views/WhatIsStageTool.vue'
 import { StageToolClient } from '@/classes/StageToolClient'
+import TubuleModel from '../views/TubuleModel.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,7 +22,12 @@ const router = createRouter({
     {
       path: '/what-is-stagetool',
       name: 'what-is-stagetool',
-      component: () => import('../views/WhatIsStageTool.vue')
+      component: WhatIsStageTool
+    },
+    {
+      path: '/tubule-model',
+      name: 'tubule-model',
+      component: TubuleModel
     }
   ]
 })
