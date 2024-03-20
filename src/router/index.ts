@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vu
 import { inject } from 'vue'
 import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
-import WhatIsStageTool from '../views/WhatIsStageTool.vue'
+// import WhatIsStageTool from '../views/WhatIsStageTool.vue'
 import { StageToolClient } from '@/classes/StageToolClient'
 import TubuleModel from '../views/TubuleModel.vue'
 
@@ -22,7 +22,12 @@ const router = createRouter({
     {
       path: '/what-is-stagetool',
       name: 'what-is-stagetool',
-      component: WhatIsStageTool
+      component: () => import('../views/WhatIsStageTool.vue')
+    },
+    {
+      path: '/developers-and-funding',
+      name: 'developers-and-funding',
+      component: () => import('../views/DevelopersAndFundingView.vue')
     },
     {
       path: '/tubule-model',
