@@ -17,7 +17,7 @@
         <li>Tubule Model</li>
         <li>Troubleshooting</li>
         <li>Whole-testis analysis & expression profiling</li>
-        <li>Developers</li>
+        <li><router-link to="/developers-and-funding">Developers & Funding</router-link></li>
         <li>Citation</li>
       </ul>
     </div>
