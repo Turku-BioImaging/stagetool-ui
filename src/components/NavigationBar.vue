@@ -15,8 +15,8 @@
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li>Cell Model</li>
         <li>Tubule Model</li>
-        <li>Troubleshooting</li>
-        <li>Whole-testis analysis & expression profiling</li>
+        <li><router-link to="/troubleshooting">Troubleshooting</router-link></li>
+        <!-- <li>Whole-testis analysis & expression profiling</li> -->
         <li>Developers</li>
         <li>Citation</li>
       </ul>

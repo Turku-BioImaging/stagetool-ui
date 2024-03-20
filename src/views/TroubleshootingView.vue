@@ -1,0 +1,23 @@
+<script lang="ts">
+export default {}
+</script>
+<template>
+  <div class="troubleshooting-view">
+    <h1>Troubleshooting</h1>
+    <p>
+        Despite very high performance, StageTool occasionally makes mistakes. The most common mistakes are:
+        <ol>
+            <li><span>Spc-Prepach vs. Spg.</span>Preleptotene spermatocytes vs. spermatogonia. Drawing a distinction between these two cell types may sometimes be very challenging.</li>
+            <li><span>El-Spt-early vs. El-Spt-late.</span>Early vs. late elongating spermatids. The former gradually develop into the latter.</li>
+            <li><span>Sert vs. RS.</span>Sertoli cells vs. round spermatids. In DAPI staining these two cell types sometimes look very similar but their localization within the epithelium is distinct and Sertoli cell nuclei are typically close to the basement membrane.</li>
+            <li><span>Stages I-V vs. VI-VIII.</span>Stages V-VI are very similar and might sometimes fall into either stage category.</li>
+        </ol>
+    </p>
+    <p>Contact <a href="mailto:stagetool@utu.fi">stagetool@utu.fi</a></p>
+  </div>
+</template>
+<style lang="scss">
+div.troubleshooting-view {
+  @apply mt-12 px-4;
+}
+</style>
