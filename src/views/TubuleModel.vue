@@ -3,23 +3,23 @@
     <h1>Tubule Model</h1>
     <div class="tubule-stages">
       <ul>
-        <li>
+        <li @click="overlays.stageOneVisible = true">
           <img src="~@/assets/tubule-stages/1.jpg" alt="" />
           <p>Stages I-V</p>
         </li>
-        <li>
+        <li @click="overlays.stageSixVisible = true">
           <img src="~@/assets/tubule-stages/7_8.png" alt="" />
           <p>Stages VI-VIII</p>
         </li>
-        <li>
+        <li @click="overlays.stageNineVisible = true">
           <img src="~@/assets/tubule-stages/9.png" alt="" />
           <p>Stages IX</p>
         </li>
-        <li>
+        <li @click="overlays.stageTenVisible = true">
           <img src="~@/assets/tubule-stages/10_11.png" alt="" />
           <p>Stages X-XI</p>
         </li>
-        <li>
+        <li @click="overlays.stageTwelveVisible = true">
           <img src="~@/assets/tubule-stages/12.png" alt="" />
           <p>Stages XII</p>
         </li>
@@ -42,10 +42,43 @@
         </p>
       </div>
     </div>
+    <div class="tubule-stage-overlays">
+      <stage-one-content-overlay v-if="overlays.stageOneVisible" />
+      <stage-six-content-overlay v-if="overlays.stageSixVisible" />
+      <stage-nine-content-overlay v-if="overlays.stageNineVisible" />
+      <stage-ten-content-overlay v-if="overlays.stageTenVisible" />
+      <stage-twelve-content-overlay v-if="overlays.stageTwelveVisible" />
+    </div>
   </div>
 </template>
 <script lang="ts">
-export default {}
+import StageOneContentOverlay from '../components/tubule-overlays/StageOneContentOverlay.vue'
+import StageSixContentOverlay from '../components/tubule-overlays/StageSixContentOverlay.vue'
+import StageNineContentOverlay from '../components/tubule-overlays/StageNineContentOverlay.vue'
+import StageTenContentOverlay from '../components/tubule-overlays/StageTenContentOverlay.vue'
+import StageTwelveContentOverlay from '../components/tubule-overlays/StageTwelveContentOverlay.vue'
+
+export default {
+  components: {
+    // OverlayInfo
+    StageOneContentOverlay,
+    StageSixContentOverlay,
+    StageNineContentOverlay,
+    StageTenContentOverlay,
+    StageTwelveContentOverlay
+  },
+  data() {
+    return {
+      overlays: {
+        stageOneVisible: false,
+        stageSixVisible: false,
+        stageNineVisible: false,
+        stageTenVisible: false,
+        stageTwelveVisible: false
+      }
+    }
+  }
+}
 </script>
 <style lang="scss">
 div.tubule-model-page {
