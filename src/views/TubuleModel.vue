@@ -43,11 +43,26 @@
       </div>
     </div>
     <div class="tubule-stage-overlays">
-      <stage-one-content-overlay v-if="overlays.stageOneVisible" />
-      <stage-six-content-overlay v-if="overlays.stageSixVisible" />
-      <stage-nine-content-overlay v-if="overlays.stageNineVisible" />
-      <stage-ten-content-overlay v-if="overlays.stageTenVisible" />
-      <stage-twelve-content-overlay v-if="overlays.stageTwelveVisible" />
+      <stage-one-content-overlay
+        v-if="overlays.stageOneVisible"
+        @close-overlay="handleCloseOverlay('stageOneVisible')"
+      />
+      <stage-six-content-overlay
+        v-if="overlays.stageSixVisible"
+        @close-overlay="handleCloseOverlay('stageSixVisible')"
+      />
+      <stage-nine-content-overlay
+        v-if="overlays.stageNineVisible"
+        @close-overlay="handleCloseOverlay('stageNineVisible')"
+      />
+      <stage-ten-content-overlay
+        v-if="overlays.stageTenVisible"
+        @close-overlay="handleCloseOverlay('stageTenVisible')"
+      />
+      <stage-twelve-content-overlay
+        v-if="overlays.stageTwelveVisible"
+        @close-overlay="handleCloseOverlay('stageTwelveVisible')"
+      />
     </div>
   </div>
 </template>
@@ -76,6 +91,11 @@ export default {
         stageTenVisible: false,
         stageTwelveVisible: false
       }
+    }
+  },
+  methods: {
+    handleCloseOverlay(stage: string) {
+      this.overlays[stage as keyof typeof this.overlays] = false
     }
   }
 }
