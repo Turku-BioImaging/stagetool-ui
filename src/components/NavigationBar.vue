@@ -14,7 +14,7 @@
       <ul>
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li>Cell Model</li>
-        <li>Tubule Model</li>
+        <li><router-link to="/tubule-model">Tubule Model</router-link></li>
         <li>Troubleshooting</li>
         <li>Whole-testis analysis & expression profiling</li>
         <li>Developers</li>
@@ -59,7 +59,7 @@ export default {
 div.navigation-bar {
   // @apply bg-slate-900;
   @apply border-b border-slate-800;
-  @apply px-3 py-2;
+  position: sticky;
   position: fixed;
   left: 0;
   right: 0;
