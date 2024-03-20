@@ -2,7 +2,7 @@
 export default {}
 </script>
 <template>
-  <div class="developers-view">
+  <div class="developers-and-funding-view">
     <h1>Funding</h1>
     <div>
       <ul>
@@ -34,14 +34,14 @@ export default {}
     </div>
     <div class="universities-div">
       <div>
-        <img src="~@/assets/logos/university_of_tartu.svg" alt="" />
+        <img src="~@/assets/logos/university_of_tartu.svg" class="h-36 w-auto" alt="" />
         <p>
           Institute of Biomedicine and Translational Medicine<br />& Institute of Computer
           Science<br />University of Tartu, Tartu, Estonia
         </p>
       </div>
       <div>
-        <img src="~@/assets/logos/UTU_logo_EN_RGB_white.png" alt="" />
+        <img src="~@/assets/logos/UTU_logo_EN_RGB_white.png" class="h-32 w-auto" alt="" />
         <p>
           Institute of Biomedicine, Integrative Physiology and Pharmacology Unit<br />University of
           Turku, Turku, Finland
@@ -50,4 +50,23 @@ export default {}
     </div>
   </div>
 </template>
-<style lang="scss"></style>
+<style lang="scss">
+div.developers-and-funding-view {
+  @apply px-4 py-12 pb-8;
+
+  h1 {
+    @apply text-cyan-400 uppercase text-lg font-semibold;
+  }
+
+  div.developers-div {
+    @apply mt-12;
+  }
+
+  div.universities-div {
+    @apply mt-12;
+    img {
+      @apply mx-auto;
+    }
+  }
+}
+</style>
