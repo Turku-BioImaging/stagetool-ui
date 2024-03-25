@@ -25,6 +25,7 @@ export default {
 <style lang="scss">
 div.citation-info {
   @apply p-6;
+  @apply bg-slate-800;
 
   blockquote {
     @apply border-l-4 border-cyan-400 pl-4;

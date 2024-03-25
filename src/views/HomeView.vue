@@ -111,6 +111,54 @@ export default {
 
     <citation-info></citation-info>
 
+    <div class="organization-logos">
+      <div>
+        <a
+          href="https://biomeditsiin.ut.ee/en/esileht-bio-ja-siirdemeditsiin-instituut"
+          target="_blank"
+        >
+          <img
+            src="~@/assets/logos/university_of_tartu.svg"
+            alt="Institute of Biomedicine and Translational Medicine, University of Tartu"
+            class="h-32 w-auto"
+          />
+          <p>
+            Institute of Biomedicine and Translational Medicine<br />& Institute of Computer
+            Science<br />University of Tartu, Tartu, Estonia
+          </p>
+        </a>
+      </div>
+      <div class="mt-8">
+        <a
+          href="https://www.utu.fi/en/university/faculty-of-medicine/institute-of-biomedicine"
+          target="_blank"
+        >
+          <img
+            src="~@/assets/logos/UTU_logo_EN_RGB_white.png"
+            class="h-32 w-auto"
+            alt="Institute of Biomedicine, Integrative Physiology and Pharmacology Unit, University of Turkus"
+          />
+          <p class="text-center">
+            Institute of Biomedicine, Integrative Physiology and Pharmacology Unit<br />University
+            of Turku, Turku, Finland
+          </p>
+        </a>
+      </div>
+      <div class="mt-8">
+        <a href="https://bioimaging.fi" target="_blank">
+          <img
+            src="~@/assets/logos/turku_bioimaging_dark_horizontal.jpg"
+            class="p-6 h-32 w-auto"
+            alt="Turku BioImaging"
+          />
+          <p>
+            Broad-based interdisciplinary science and infrastructure umbrella. Jointly operated by
+            Åbo Akademi University and the University of Turku.
+          </p>
+        </a>
+      </div>
+    </div>
+
     <transition name="fade">
       <wait-spinner v-if="showWaitSpinner"></wait-spinner>
     </transition>
@@ -153,6 +201,13 @@ div.home-view {
   .fade-enter,
   .fade-leave-to {
     opacity: 0;
+  }
+
+  div.organization-logos {
+    @apply text-center text-sm px-12 bg-black py-24;
+    img {
+      @apply mx-auto;
+    }
   }
 }
 </style>

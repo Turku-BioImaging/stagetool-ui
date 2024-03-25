@@ -75,6 +75,10 @@ export default {}
             alt="Turku BioImaging"
           />
         </a>
+        <p class="text-center">
+          Broad-based interdisciplinary science and infrastructure umbrella. Jointly operated by Åbo
+          Akademi University and the University of Turku.
+        </p>
       </div>
     </div>
   </div>
@@ -95,6 +99,9 @@ div.developers-and-funding-view {
     @apply mt-12;
     img {
       @apply mx-auto;
+    }
+    p {
+      @apply text-sm;
     }
   }
 }
