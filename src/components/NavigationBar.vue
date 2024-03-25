@@ -16,7 +16,7 @@
         <li><router-link to="/cell-model">Cell Model</router-link></li>
         <li><router-link to="/tubule-model">Tubule Model</router-link></li>
         <li>Troubleshooting</li>
-        <li>Whole-testis analysis & expression profiling</li>
+        <!-- <li>Whole-testis analysis & expression profiling</li> -->
         <li><router-link to="/developers-and-funding">Developers & Funding</router-link></li>
         <li>Citation</li>
       </ul>
@@ -25,6 +25,8 @@
 </template>
 
 <script lang="ts">
+import type { RouteLocationNormalized } from 'vue-router'
+
 export default {
   data() {
     return {
@@ -40,7 +42,20 @@ export default {
       this.menuIsOpen = false
     },
     checkScroll() {
-      this.isTop = window.pageYOffset <= 50
+      // this.isTop = window.scrollY <= 50
+
+      if (this.$router.currentRoute.value.path === '/' && window.scrollY <= 100) {
+        this.isTop = true
+      } else {
+        this.isTop = false
+      }
+    },
+    routeChanged(to: RouteLocationNormalized, from: RouteLocationNormalized) {
+      if (to.path === '/') {
+        this.isTop = true
+      }
+
+      this.menuIsOpen = false
     }
   },
   mounted() {
@@ -51,6 +66,9 @@ export default {
   beforeDestroy() {
     window.removeEventListener('click', this.closeMenu)
     window.removeEventListener('scroll', this.checkScroll)
+  },
+  watch: {
+    $route: 'routeChanged'
   }
 }
 </script>
@@ -67,8 +85,9 @@ div.navigation-bar {
   div.header {
     @apply flex items-center;
     h1 {
-      @apply font-semibold;
-      @apply text-xl;
+      // @apply font-semibold;
+      @apply text-xl font-semibold not-italic text-white;
+      // font-style: normal !important;
     }
 
     div.bars-div {
@@ -94,15 +113,16 @@ div.navigation-bar {
   }
 
   &.menu-is-open {
-    @apply bg-slate-800;
+    @apply bg-slate-900;
   }
 
   &.menu-is-closed {
-    @apply bg-slate-900;
+    // @apply bg-slate-900;
+    @apply bg-black;
   }
 
   &.is-top {
-    @apply bg-slate-900;
+    // @apply bg-slate-900;
     @apply border-none;
   }
 }

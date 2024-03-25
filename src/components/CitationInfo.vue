@@ -19,7 +19,7 @@ export default {
         https://doi.org/10.1210/endocr/bqac202
       </p>
     </blockquote>
-    <p class='text-lg text-center text-cyan-300 mt-6'>More citation options</p>
+    <!-- <p class='text-lg text-center text-cyan-300 mt-6'>More citation options</p> -->
   </div>
 </template>
 <style lang="scss">
