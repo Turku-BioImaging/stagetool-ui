@@ -1,7 +1,7 @@
 <template>
   <div
     class="navigation-bar"
-    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen, 'is-top': isTop }"
+    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen }"
     @click.stop
   >
     <div class="header">
