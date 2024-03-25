@@ -7,12 +7,17 @@ import NavigationBar from './components/NavigationBar.vue'
   <div class="app">
     <navigation-bar/>
 
-    <RouterView class="mt-12" />
+    <div class="clear-div"></div>
+    <RouterView />
   </div>
 </template>
 
 <style lang='scss'>
 div.app {
-  height: 100vh;
+  // height: 100vh;
+
+  div.clear-div {
+    @apply mt-24;
+  }
 }
 </style>

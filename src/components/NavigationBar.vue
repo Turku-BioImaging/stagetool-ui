@@ -80,13 +80,9 @@ div.navigation-bar {
   @apply px-3 py-3;
   // position: sticky;
   position: fixed;
-  // position: relative;
-  // clear: both;
-  // margin-bottom: 12rem;
   left: 0;
   right: 0;
   top: 0;
-  // height: 3rem;
   
   div.header {
     @apply flex items-center;
@@ -116,6 +112,8 @@ div.navigation-bar {
         }
       }
     }
+
+    z-index: 500;
   }
 
   &.menu-is-open {

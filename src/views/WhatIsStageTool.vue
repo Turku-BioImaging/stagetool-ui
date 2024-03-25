@@ -66,7 +66,7 @@ export default {}
 
 <style lang="scss">
 div.what-is-stagetool {
-  @apply px-4 py-6;
+  @apply px-4 pb-12;
 
   h1 {
     @apply mb-4 font-semibold text-xl;

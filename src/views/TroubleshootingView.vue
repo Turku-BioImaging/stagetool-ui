@@ -18,23 +18,28 @@ export default {}
 </template>
 <style lang="scss">
 div.troubleshooting-view {
-  @apply mt-12 px-4;
+  @apply px-4;
 
   ul {
     margin-left: 1.5rem;
 
-    li {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        left: -1.5rem;
-        top: 0.65rem;
-        width: 0.5rem;
-        height: 0.5rem;
-        // background-color: cyan;
-        @apply bg-cyan-400;
-      }
+    // li {
+    //   position: relative;
+    //   &::before {
+    //     content: '';
+    //     position: absolute;
+    //     left: -1.5rem;
+    //     top: 0.65rem;
+    //     width: 0.5rem;
+    //     height: 0.5rem;
+    //     z-index: 0;
+    //     // background-color: cyan;
+    //     @apply bg-cyan-400;
+    //   }
+    // }
+
+    li:not(:last-child) {
+      margin-bottom: 1.5rem;
     }
     
   }

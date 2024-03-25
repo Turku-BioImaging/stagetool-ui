@@ -81,7 +81,8 @@ export default {}
 
 <style lang="scss">
 div.cell-model-page {
-  @apply px-4 py-16;
+  @apply px-4;
+  height: 100%;
 
 }
 </style>
