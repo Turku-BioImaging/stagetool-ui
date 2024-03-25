@@ -176,13 +176,13 @@ div.home-view {
 
     &::before {
       content: '';
-      background-image: url('/images/home_bg.png');
+      background-image: url('/images/home_bg_magma.png');
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      opacity: 0.2; /* Change this to the opacity you want */
-      top: -20rem;
+      opacity: 0.3; /* Change this to the opacity you want */
+      top: -30rem;
       left: 0;
       bottom: 0;
       right: 0;
