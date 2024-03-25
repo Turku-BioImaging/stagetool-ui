@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/WhatIsStageTool.vue')
     },
     {
+      path: '/tubule-model',
+      name: 'tubule-model',
+      component: TubuleModel
+    },
+    {
       path: '/developers-and-funding',
       name: 'developers-and-funding',
       component: () => import('../views/DevelopersAndFundingView.vue')
@@ -39,6 +44,11 @@ const router = createRouter({
       path: '/tubule-model',
       name: 'tubule-model',
       component: TubuleModel
+    },
+    {
+      path: '/troubleshooting',
+      name: 'troubleshooting',
+      component: () => import('../views/TroubleshootingView.vue')
     }
   ]
 })

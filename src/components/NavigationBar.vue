@@ -15,10 +15,10 @@
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li><router-link to="/cell-model">Cell Model</router-link></li>
         <li><router-link to="/tubule-model">Tubule Model</router-link></li>
-        <li>Troubleshooting</li>
+        <li><router-link to="/troubleshooting">Troubleshooting</router-link></li>
         <!-- <li>Whole-testis analysis & expression profiling</li> -->
         <li><router-link to="/developers-and-funding">Developers & Funding</router-link></li>
-        <li>Citation</li>
+        <!-- <li>Citation</li> -->
       </ul>
     </div>
   </div>
