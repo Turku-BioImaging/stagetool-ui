@@ -12,6 +12,9 @@
     </div>
     <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
       <ul>
+        <li>
+          <router-link to="/"><i class="uil uil-home"></i> Home</router-link>
+        </li>
         <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
         <li><router-link to="/cell-model">Cell Model</router-link></li>
         <li><router-link to="/tubule-model">Tubule Model</router-link></li>
@@ -42,8 +45,6 @@ export default {
       this.menuIsOpen = false
     },
     checkScroll() {
-      // this.isTop = window.scrollY <= 50
-
       if (this.$router.currentRoute.value.path === '/' && window.scrollY <= 100) {
         this.isTop = true
       } else {
@@ -53,9 +54,9 @@ export default {
     routeChanged(to: RouteLocationNormalized, from: RouteLocationNormalized) {
       if (to.path === '/') {
         this.isTop = true
+      } else {
+        this.isTop = false
       }
-
-      this.menuIsOpen = false
     }
   },
   mounted() {
@@ -77,11 +78,16 @@ export default {
 div.navigation-bar {
   @apply border-b border-slate-800;
   @apply px-3 py-3;
-  position: sticky;
+  // position: sticky;
+  position: fixed;
+  // position: relative;
+  // clear: both;
+  // margin-bottom: 12rem;
   left: 0;
   right: 0;
   top: 0;
-
+  // height: 3rem;
+  
   div.header {
     @apply flex items-center;
     h1 {

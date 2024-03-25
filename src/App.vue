@@ -5,9 +5,9 @@ import NavigationBar from './components/NavigationBar.vue'
 
 <template>
   <div class="app">
-    <navigation-bar />
+    <navigation-bar/>
 
-    <RouterView />
+    <RouterView class="mt-12" />
   </div>
 </template>
 
