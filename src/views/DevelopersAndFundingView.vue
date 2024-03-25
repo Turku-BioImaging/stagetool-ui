@@ -3,17 +3,19 @@ export default {}
 </script>
 <template>
   <div class="developers-and-funding-view">
-    <h1>Funding</h1>
-    <div>
-      <ul>
-        <li>Academy of Finland</li>
-        <li>Sigrid Jusélius Foundation</li>
-        <li>Estonian Research Council</li>
-        <li>Novo Nordisk Foundation</li>
-        <li>Jalmari and Rauha Ahokas Foundation</li>
-      </ul>
+    <div class="funding-div text-center">
+      <h1>Funding</h1>
+      <div>
+        <ul>
+          <li>Academy of Finland</li>
+          <li>Sigrid Jusélius Foundation</li>
+          <li>Estonian Research Council</li>
+          <li>Novo Nordisk Foundation</li>
+          <li>Jalmari and Rauha Ahokas Foundation</li>
+        </ul>
+      </div>
     </div>
-    <div class="developers-div">
+    <div class="developers-div text-center">
       <h1>Developers</h1>
       <div>
         <ul>
@@ -34,18 +36,45 @@ export default {}
     </div>
     <div class="universities-div">
       <div>
-        <img src="~@/assets/logos/university_of_tartu.svg" class="h-36 w-auto" alt="" />
-        <p>
-          Institute of Biomedicine and Translational Medicine<br />& Institute of Computer
-          Science<br />University of Tartu, Tartu, Estonia
-        </p>
+        <a
+          href="https://biomeditsiin.ut.ee/en/esileht-bio-ja-siirdemeditsiin-instituut"
+          target="_blank"
+        >
+          <img
+            src="~@/assets/logos/university_of_tartu.svg"
+            class="h-36 w-auto"
+            alt="Institute of Biomedicine and Translational Medicine, University of Tartu"
+          />
+          <p class="text-center">
+            Institute of Biomedicine and Translational Medicine<br />& Institute of Computer
+            Science<br />University of Tartu, Tartu, Estonia
+          </p>
+        </a>
       </div>
-      <div>
-        <img src="~@/assets/logos/UTU_logo_EN_RGB_white.png" class="h-32 w-auto" alt="" />
-        <p>
-          Institute of Biomedicine, Integrative Physiology and Pharmacology Unit<br />University of
-          Turku, Turku, Finland
-        </p>
+      <div class="mt-8">
+        <a
+          href="https://www.utu.fi/en/university/faculty-of-medicine/institute-of-biomedicine"
+          target="_blank"
+        >
+          <img
+            src="~@/assets/logos/UTU_logo_EN_RGB_white.png"
+            class="h-32 w-auto"
+            alt="Institute of Biomedicine, Integrative Physiology and Pharmacology Unit, University of Turkus"
+          />
+          <p class="text-center">
+            Institute of Biomedicine, Integrative Physiology and Pharmacology Unit<br />University
+            of Turku, Turku, Finland
+          </p>
+        </a>
+      </div>
+      <div class="mt-8">
+        <a href="https://bioimaging.fi" target="_blank">
+          <img
+            src="~@/assets/logos/turku_bioimaging_dark_horizontal.jpg"
+            class="p-4 h-32 w-auto"
+            alt="Turku BioImaging"
+          />
+        </a>
       </div>
     </div>
   </div>
@@ -55,7 +84,7 @@ div.developers-and-funding-view {
   @apply px-4 py-12 pb-8;
 
   h1 {
-    @apply text-cyan-400 uppercase text-lg font-semibold;
+    @apply text-cyan-500 uppercase text-2xl;
   }
 
   div.developers-div {

@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  stagetool-ui:
+    image: stagetool-ui:latest
+    ports:
+      - '5665:80'

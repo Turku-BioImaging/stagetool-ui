@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
 // import WhatIsStageTool from '../views/WhatIsStageTool.vue'
 import { StageToolClient } from '@/classes/StageToolClient'
+import CellModel from '../views/CellModel.vue'
 import TubuleModel from '../views/TubuleModel.vue'
 
 const router = createRouter({
@@ -33,6 +34,16 @@ const router = createRouter({
       path: '/developers-and-funding',
       name: 'developers-and-funding',
       component: () => import('../views/DevelopersAndFundingView.vue')
+    },
+    {
+      path: '/cell-model',
+      name: 'cell-model',
+      component: CellModel
+    },
+    {
+      path: '/tubule-model',
+      name: 'tubule-model',
+      component: TubuleModel
     },
     {
       path: '/troubleshooting',
