@@ -8,7 +8,7 @@
       <div class="bars-div pr-2" @click="toggleMenu">
         <i class="uil uil-bars text-3xl"></i>
       </div>
-      <h1 v-show="!isTop"><router-link to="/">StageTool</router-link></h1>
+      <h1><router-link to="/">StageTool</router-link></h1>
     </div>
     <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
       <ul>
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       menuIsOpen: false,
-      isTop: true
+      // isTop: true
     }
   },
   methods: {
@@ -44,33 +44,7 @@ export default {
     closeMenu() {
       this.menuIsOpen = false
     },
-    checkScroll() {
-      if (this.$router.currentRoute.value.path === '/' && window.scrollY <= 100) {
-        this.isTop = true
-      } else {
-        this.isTop = false
-      }
-    },
-    routeChanged(to: RouteLocationNormalized, from: RouteLocationNormalized) {
-      if (to.path === '/') {
-        this.isTop = true
-      } else {
-        this.isTop = false
-      }
-    }
   },
-  mounted() {
-    window.addEventListener('click', this.closeMenu)
-    window.addEventListener('scroll', this.checkScroll)
-    this.checkScroll()
-  },
-  beforeDestroy() {
-    window.removeEventListener('click', this.closeMenu)
-    window.removeEventListener('scroll', this.checkScroll)
-  },
-  watch: {
-    $route: 'routeChanged'
-  }
 }
 </script>
 
@@ -78,11 +52,14 @@ export default {
 div.navigation-bar {
   @apply border-b border-slate-800;
   @apply px-3 py-3;
+  @apply bg-black;
   // position: sticky;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
+  z-index: 1000;
+  // background-color: transparent;
   
   div.header {
     @apply flex items-center;

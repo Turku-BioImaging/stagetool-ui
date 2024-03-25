@@ -81,7 +81,7 @@ export default {
 
 <template>
   <div class="home-view">
-    <section class="intro-section border-slate-800 border-b px-12 pt-8 pb-24">
+    <section class="intro-section px-12 pt-8 pb-24">
       <h1 class="text-2xl font-semibold text-center text-cyan-400">StageTool</h1>
       <p class="mt-3 text-center">
         An automated approach for identification of mouse seminiferous epithelial cell types and
@@ -169,6 +169,27 @@ export default {
 div.home-view {
   // @apply h-full;
   @apply flex flex-col justify-center;
+
+  section.intro-section {
+    position: relative;
+    // @apply -mt-16;
+
+    &::before {
+      content: '';
+      background-image: url('/images/home_bg.png');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.2; /* Change this to the opacity you want */
+      top: -20rem;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
+  }
 
   div.upload-container {
     @apply bg-slate-900 p-8;
