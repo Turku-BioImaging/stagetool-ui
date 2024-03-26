@@ -20,7 +20,7 @@ export default {}
       <div>
         <ul>
           <li>Oliver Meikar, PhD</li>
-          <li>Daniel Majoral, MSc</li>
+          <li>Daniel Majoral, PhD</li>
           <li>Olli Heikkinen, BMed</li>
           <li>Sini Leskinen, BMed</li>
           <li>Asst. Prof. Pekka Ruusuvuori, PhD</li>
