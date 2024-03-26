@@ -7,7 +7,7 @@ export default {}
       <h1>Funding</h1>
       <div>
         <ul>
-          <li>Academy of Finland</li>
+          <li>Research Council of Finland</li>
           <li>Sigrid Jusélius Foundation</li>
           <li>Estonian Research Council</li>
           <li>Novo Nordisk Foundation</li>
