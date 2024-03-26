@@ -85,7 +85,7 @@ export default {
       <h1 class="text-2xl font-semibold text-center text-cyan-400">StageTool</h1>
       <p class="mt-3 text-center">
         An automated approach for identification of mouse seminiferous epithelial cell types and
-        stages based on fluorescent chromating labeling.
+        stages based on fluorescent chromatin labeling.
       </p>
     </section>
 
