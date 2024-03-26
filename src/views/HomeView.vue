@@ -82,7 +82,7 @@ export default {
 <template>
   <div class="home-view">
     <section class="intro-section px-12 pt-8 pb-24">
-      <h1 class="text-2xl font-semibold text-center text-cyan-400">StageTool</h1>
+      <h1 class="text-2xl text-center text-cyan-400">StageTool</h1>
       <p class="mt-3 text-center">
         An automated approach for identification of mouse seminiferous epithelial cell types and
         stages based on fluorescent chromatin labeling.
@@ -90,28 +90,35 @@ export default {
     </section>
 
     <sample-image-grid @imageSelected="handleDemoImageClicked" />
-    <div class="upload-container mt-6">
-      <h2>Upload your own images</h2>
-      <input type="file" accept="image/tiff, image/png" multiple @change="handleFileChange" /><br />
-      <div class="text-center">
-        <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
-      </div>
-      <div class="info-div">
-        <p>
-          <span class="font-semibold">Image requirements</span>
-        </p>
+    <section class="upload-container">
+      <div class="mt-6">
+        <h2>Upload your own images</h2>
+        <input
+          type="file"
+          accept="image/tiff, image/png"
+          multiple
+          @change="handleFileChange"
+        /><br />
+        <div class="text-center">
+          <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
+        </div>
+        <div class="info-div">
+          <p>
+            <span class="font-semibold">Image requirements</span>
+          </p>
 
-        <ul>
-          <li>1024 * 1024</li>
-          <li>400x magnification</li>
-          <li>DAPI or related chromatin staining</li>
-        </ul>
+          <ul>
+            <li>1024 * 1024</li>
+            <li>400x magnification</li>
+            <li>DAPI or related chromatin staining</li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
 
     <citation-info></citation-info>
 
-    <div class="organization-logos">
+    <section class="organization-logos">
       <div>
         <a
           href="https://biomeditsiin.ut.ee/en/esileht-bio-ja-siirdemeditsiin-instituut"
@@ -128,7 +135,7 @@ export default {
           </p>
         </a>
       </div>
-      <div class="mt-8">
+      <div class="my-8 lg:my-16">
         <a
           href="https://www.utu.fi/en/university/faculty-of-medicine/institute-of-biomedicine"
           target="_blank"
@@ -144,7 +151,7 @@ export default {
           </p>
         </a>
       </div>
-      <div class="mt-8">
+      <div class="">
         <a href="https://bioimaging.fi" target="_blank">
           <img
             src="~@/assets/logos/turku_bioimaging_dark_horizontal.jpg"
@@ -157,7 +164,7 @@ export default {
           </p>
         </a>
       </div>
-    </div>
+    </section>
 
     <transition name="fade">
       <wait-spinner v-if="showWaitSpinner"></wait-spinner>
@@ -189,9 +196,21 @@ div.home-view {
       position: absolute;
       z-index: -1;
     }
+
+    @screen lg {
+      min-height: 60vh;
+
+      h1 {
+        @apply text-4xl;
+      }
+
+      p {
+        @apply text-lg w-1/3 mx-auto mt-6;
+      }
+    }
   }
 
-  div.upload-container {
+  section.upload-container {
     @apply bg-slate-900 p-8;
     h2 {
       @apply text-2xl mb-4 text-center;
@@ -203,6 +222,12 @@ div.home-view {
 
     button {
       @apply text-center font-semibold bg-cyan-400 text-white w-1/3 p-2 mt-4;
+    }
+
+    @screen lg {
+      & > div {
+        @apply w-2/3 mx-auto;
+      }
     }
   }
 
@@ -224,10 +249,21 @@ div.home-view {
     opacity: 0;
   }
 
-  div.organization-logos {
+  section.organization-logos {
     @apply text-center text-sm px-12 bg-black py-24;
     img {
       @apply mx-auto;
+    }
+
+    @screen lg {
+
+      & > div:nth-child(1) {
+        @apply my-8;
+      }
+
+      p {
+        @apply text-center w-1/3 mx-auto;
+      }
     }
   }
 }
