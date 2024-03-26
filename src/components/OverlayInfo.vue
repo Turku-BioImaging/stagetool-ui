@@ -26,7 +26,7 @@ div.overlay-info-component {
   @apply fixed top-0 left-0;
   @apply px-6 py-8;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 1100;
 
   div.image-div {
     @apply mt-6;
