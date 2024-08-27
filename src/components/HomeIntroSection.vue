@@ -11,7 +11,7 @@
       <div>
         <img src="@/assets/logos/university_of_tartu.svg" alt="University of Tartu" />
       </div>
-      <div><img src="@/assets/logos/UTU_logo_RGB_EN.jpg" alt="University of Turku" /></div>
+      <div><img src="@/assets/logos/UTU_logo_EN_RGB.png" alt="University of Turku" /></div>
       <div>
         <img src="@/assets/logos/turku_bioimaging_dark_horizontal.jpg" alt="Turku BioImaging" />
       </div>
