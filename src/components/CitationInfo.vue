@@ -6,37 +6,38 @@ export default {
 </script>
 <template>
   <div class="citation-info">
-    <div>
-      <h2 class="text-2xl mb-4 text-center">Citation</h2>
-      <p>
-        When using this tool for publication purposes, please acknowledge the developers by
-        including the following citation:
-      </p>
-      <blockquote class="mt-6">
-        <p>
-          Meikar, O., Majoral, D., Heikkinen, O., Valkama, E., Leskinen, S., Rebane, A., Ruusuvuori,
-          P., Toppari, J., Mäkelä, J. A., & Kotaja, N. (2022). STAGETOOL, a Novel Automated Approach
-          for Mouse Testis Histological Analysis. Endocrinology, 164(2), bqac202.
-          https://doi.org/10.1210/endocr/bqac202
+    <div class="container mx-auto">
+      <div class="w-3/4 mx-auto">
+        <h2>Citation</h2>
+        <p class="mb-6">
+          When using this tool for publication purposes, please acknowledge the developers by
+          including the following citation:
         </p>
-      </blockquote>
-      <!-- <p class='text-lg text-center text-cyan-300 mt-6'>More citation options</p> -->
+        <blockquote>
+          <p>
+            Meikar, O., Majoral, D., Heikkinen, O., Valkama, E., Leskinen, S., Rebane, A.,
+            Ruusuvuori, P., Toppari, J., Mäkelä, J. A., & Kotaja, N. (2022). STAGETOOL, a Novel
+            Automated Approach for Mouse Testis Histological Analysis. Endocrinology, 164(2),
+            bqac202. https://doi.org/10.1210/endocr/bqac202
+          </p>
+        </blockquote>
+      </div>
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 div.citation-info {
-  @apply p-6;
-  @apply bg-slate-800;
+  @apply py-16;
+  @apply bg-slate-100;
+
+  h2 {
+    @apply text-3xl font-semibold tracking-widest uppercase;
+    @apply mb-8;
+  }
 
   blockquote {
-    @apply border-l-4 border-cyan-400 pl-4;
+    @apply border-l-4 border-rose-500 pl-4 text-2xl font-light;
   }
 
-  @screen lg {
-    & > div {
-      @apply w-2/3 mx-auto my-16;
-    }
-  }
 }
 </style>

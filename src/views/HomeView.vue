@@ -113,8 +113,6 @@ export default {
       </div>
     </section>
 
-    <citation-info></citation-info>
-
     <section class="organization-logos">
       <div>
         <a
