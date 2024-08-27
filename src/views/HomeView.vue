@@ -6,6 +6,7 @@ import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
 import HomeIntroSection from '../components/HomeIntroSection.vue'
+import HomeAbstractSection from '../components/HomeAbstractSection.vue'
 import SampleImageGrid from '../components/SampleImageGrid.vue'
 import CitationInfo from '../components/CitationInfo.vue'
 const router = useRouter()
@@ -75,7 +76,7 @@ watch(
 
 <script lang="ts">
 export default {
-  components: { SampleImageGrid, WaitSpinner, HomeIntroSection },
+  components: { SampleImageGrid, WaitSpinner, HomeIntroSection, HomeAbstractSection },
   name: 'HomeView'
 }
 </script>
@@ -83,7 +84,8 @@ export default {
 <template>
   <div class="home-view">
     <home-intro-section />
-
+    <home-abstract-section />
+    <citation-info />
     <sample-image-grid @imageSelected="handleDemoImageClicked" />
     <section class="upload-container">
       <div class="mt-6">
