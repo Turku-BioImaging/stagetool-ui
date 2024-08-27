@@ -32,7 +32,7 @@ export default {
   <div class="app">
     <navigation-bar v-show="menuIsOpen" />
 
-    <RouterView class="pt-24" />
+    <RouterView />
   </div>
 </template>
 

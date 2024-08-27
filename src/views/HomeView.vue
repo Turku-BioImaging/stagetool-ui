@@ -5,6 +5,7 @@ import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
+import HomeIntroSection from '../components/HomeIntroSection.vue'
 import SampleImageGrid from '../components/SampleImageGrid.vue'
 import CitationInfo from '../components/CitationInfo.vue'
 const router = useRouter()
@@ -74,20 +75,14 @@ watch(
 
 <script lang="ts">
 export default {
-  components: { SampleImageGrid, WaitSpinner },
+  components: { SampleImageGrid, WaitSpinner, HomeIntroSection },
   name: 'HomeView'
 }
 </script>
 
 <template>
   <div class="home-view">
-    <section class="intro-section px-12 pt-8 pb-24">
-      <h1 class="text-2xl text-center text-cyan-400">StageTool</h1>
-      <p class="mt-3 text-center">
-        An automated approach for identification of mouse seminiferous epithelial cell types and
-        stages based on fluorescent chromatin labeling.
-      </p>
-    </section>
+    <home-intro-section />
 
     <sample-image-grid @imageSelected="handleDemoImageClicked" />
     <section class="upload-container">
@@ -174,41 +169,7 @@ export default {
 
 <style lang="scss">
 div.home-view {
-  // @apply h-full;
   @apply flex flex-col justify-center;
-
-  section.intro-section {
-    position: relative;
-    // @apply -mt-16;
-
-    &::before {
-      content: '';
-      background-image: url('/images/home_bg_magma.png');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      opacity: 0.3; /* Change this to the opacity you want */
-      top: -30rem;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-      z-index: -1;
-    }
-
-    @screen lg {
-      min-height: 60vh;
-
-      h1 {
-        @apply text-4xl;
-      }
-
-      p {
-        @apply text-lg w-1/3 mx-auto mt-6;
-      }
-    }
-  }
 
   section.upload-container {
     @apply bg-slate-900 p-8;
@@ -256,7 +217,6 @@ div.home-view {
     }
 
     @screen lg {
-
       & > div:nth-child(1) {
         @apply my-8;
       }
