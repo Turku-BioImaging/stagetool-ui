@@ -9,6 +9,7 @@ import HomeIntroSection from '../components/HomeIntroSection.vue'
 import HomeAbstractSection from '../components/HomeAbstractSection.vue'
 import SampleImageGrid from '../components/SampleImageGrid.vue'
 import CitationInfo from '../components/CitationInfo.vue'
+import FooterDefault from '../components/FooterDefault.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref<File[]>([])
@@ -27,7 +28,6 @@ const handleDemoImageClicked = async (imageSrc: string) => {
 const taskStore = useTaskStore()
 
 const handleFileChange = (event: Event) => {
-  // selectedFiles.value = Array.from(event.target?.files)
   selectedFiles.value = Array.from((event.target as HTMLInputElement).files || [])
   uploadButtonEnabled.value = selectedFiles.value.length > 0
 }
@@ -76,7 +76,13 @@ watch(
 
 <script lang="ts">
 export default {
-  components: { SampleImageGrid, WaitSpinner, HomeIntroSection, HomeAbstractSection },
+  components: {
+    SampleImageGrid,
+    WaitSpinner,
+    HomeIntroSection,
+    HomeAbstractSection,
+    FooterDefault
+  },
   name: 'HomeView'
 }
 </script>
@@ -113,53 +119,7 @@ export default {
       </div>
     </section>
 
-    <section class="organization-logos">
-      <div>
-        <a
-          href="https://biomeditsiin.ut.ee/en/esileht-bio-ja-siirdemeditsiin-instituut"
-          target="_blank"
-        >
-          <img
-            src="~@/assets/logos/university_of_tartu.svg"
-            alt="Institute of Biomedicine and Translational Medicine, University of Tartu"
-            class="h-32 w-auto"
-          />
-          <p>
-            Institute of Biomedicine and Translational Medicine<br />& Institute of Computer
-            Science<br />University of Tartu, Tartu, Estonia
-          </p>
-        </a>
-      </div>
-      <div class="my-8 lg:my-16">
-        <a
-          href="https://www.utu.fi/en/university/faculty-of-medicine/institute-of-biomedicine"
-          target="_blank"
-        >
-          <img
-            src="~@/assets/logos/UTU_logo_EN_RGB_white.png"
-            class="h-32 w-auto"
-            alt="Institute of Biomedicine, Integrative Physiology and Pharmacology Unit, University of Turkus"
-          />
-          <p class="text-center">
-            Institute of Biomedicine, Integrative Physiology and Pharmacology Unit<br />University
-            of Turku, Turku, Finland
-          </p>
-        </a>
-      </div>
-      <div class="">
-        <a href="https://bioimaging.fi" target="_blank">
-          <img
-            src="~@/assets/logos/turku_bioimaging_dark_horizontal.jpg"
-            class="p-6 h-32 w-auto"
-            alt="Turku BioImaging"
-          />
-          <p>
-            Broad-based interdisciplinary science and infrastructure umbrella. Jointly operated by
-            Åbo Akademi University and the University of Turku.
-          </p>
-        </a>
-      </div>
-    </section>
+    <footer-default />
 
     <transition name="fade">
       <wait-spinner v-if="showWaitSpinner"></wait-spinner>
