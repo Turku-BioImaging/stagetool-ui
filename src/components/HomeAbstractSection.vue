@@ -1,31 +1,7 @@
 <template>
   <section class="abstract-section">
     <div class="container mx-auto">
-      <!-- <h2 class="abstract-subtitle">Abstract</h2> -->
-      <!-- <p class="abstract-paragraph">
-        Spermatogenesis is a complex differentiation process that takes place in the seminiferous
-        tubules. A specific organization of spermatogenic cells within the seminiferous epithelium
-        enables a synchronous progress of germ cells at certain steps of differentiation on the
-        spermatogenic pathway. This can be observed in testis cross-sections where seminiferous
-        tubules can be classified into distinct stages of constant cellular composition (12 stages
-        in the mouse). For a detailed analysis of spermatogenesis, these stages have to be
-        individually observed from testis cross-sections. However, the recognition of stages
-        requires special training and expertise. Furthermore, the manual scoring is laborious
-        considering the high number of tubule cross-sections that have to be analyzed. To facilitate
-        the analysis of spermatogenesis, we have developed a convolutional deep neural network-based
-        approach named “STAGETOOL.” STAGETOOL analyses histological images of
-        4′,6-diamidine-2′-phenylindole dihydrochloride (DAPI)-stained mouse testis cross-sections at
-        ×400 magnification, and very accurately classifies tubule cross-sections into 5 stage
-        classes and cells into 9 categories. STAGETOOL classification accuracy for stage classes of
-        seminiferous tubules of a whole-testis cross-section is 99.1%. For cellular level analysis
-        the F1 score for 9 seminiferous epithelial cell types ranges from 0.80 to 0.98. Furthermore,
-        we show that STAGETOOL can be applied for the analysis of knockout mouse models with
-        spermatogenic defects, as well as for automated profiling of protein expression patterns.
-        STAGETOOL is the first fluorescent labeling–based automated method for mouse testis
-        histological analysis that enables both stage and cell-type recognition. While STAGETOOL
-        qualitatively parallels an experienced human histologist, it outperforms humans time-wise,
-        therefore representing a major advancement in male reproductive biology research.
-      </p> -->
+      <h2 class="abstract-subtitle">How StageTool works</h2>
       <div class="stagetool-scheme">
         <img src="@/assets/sample-images/stagetool_scheme.jpg" alt="StageTool scheme" />
         <p>
@@ -55,7 +31,7 @@
           </p>
         </div>
         <div class="right-column">
-          <img src="@/assets/sample-images/whole_testis_tubular_level_analysis.jpeg" alt="" />
+          <img src="@/assets/sample-images/stagetool_robustness.jpeg" alt="" />
           <p>
             <em>Figure 3. </em>STAGETOOL output images for A and B, Miwi knockout (KO) and C, Spef2
             KO mouse seminiferous tubule cross-sections. Two representative examples of STAGETOOL
@@ -85,8 +61,8 @@ section.abstract-section {
   }
   h2.abstract-subtitle {
     @screen lg {
-      @apply text-2xl text-slate-900 font-semibold;
-      @apply w-3/4 mx-auto;
+      @apply text-3xl text-slate-900 font-semibold tracking-widest uppercase;
+      @apply w-3/4 mx-auto mb-16;
     }
   }
   p.abstract-paragraph {
@@ -103,6 +79,7 @@ section.abstract-section {
   }
 
   div.two-column-content {
+    @apply mt-16;
     @screen lg {
       @apply grid grid-cols-2 gap-8 w-3/4 mx-auto;
       & > div {
