@@ -52,6 +52,7 @@ export default {
 
     <image-uploader @is-waiting="handleProcessIsWaiting" />
 
+    <citation-info />
     <footer-default />
 
     <transition name="fade">
