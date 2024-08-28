@@ -83,15 +83,12 @@ export default {
 </template>
 <style lang="scss" scoped>
 div.sample-image-grid {
-  // @apply p-6;
-
   div.image-grid {
     @screen lg {
       @apply w-3/4 mx-auto py-12;
     }
 
     h2 {
-      // @apply text-center text-cyan-500 text-3xl;
       @apply font-semibold uppercase tracking-widest text-3xl;
     }
     ul {
@@ -105,11 +102,5 @@ div.sample-image-grid {
       }
     }
   }
-
-  // @screen lg {
-  //   div.image-grid-container {
-  //     @apply w-2/3 mx-auto my-16;
-  //   }
-  // }
 }
 </style>

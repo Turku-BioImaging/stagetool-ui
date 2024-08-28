@@ -27,7 +27,6 @@ onMounted(async () => {
     }
   }
 })
-
 </script>
 
 <script lang="ts">
@@ -64,27 +63,6 @@ export default {
 <style lang="scss">
 div.home-view {
   @apply flex flex-col justify-center;
-
-  section.upload-container {
-    @apply bg-slate-900 p-8;
-    h2 {
-      @apply text-2xl mb-4 text-center;
-    }
-
-    input {
-      @apply bg-slate-600 w-full;
-    }
-
-    button {
-      @apply text-center font-semibold bg-cyan-400 text-white w-1/3 p-2 mt-4;
-    }
-
-    @screen lg {
-      & > div {
-        @apply w-2/3 mx-auto;
-      }
-    }
-  }
 
   div.info-div {
     @apply mt-6;
