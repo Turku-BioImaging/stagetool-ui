@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const emit = defineEmits(['is-waiting'])
-import { TaskUploader } from '@/classes/TaskUploader'
+import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const taskStore = useTaskStore()
 const selectedFiles = ref<File[]>([])
-const showWaitSpinner = ref(false)
-// let intervalId: number | null = null
+let intervalId: number | null = null
 
 const sendImageSrc = (event: Event) => {
   handleDemoImageClicked((event.target as HTMLImageElement).src)
@@ -30,14 +31,24 @@ const handleUpload = async () => {
   let task = await TaskUploader.upload(selectedFiles.value)
   taskStore.setTask(task)
 
-  showWaitSpinner.value = true
-
   intervalId = setInterval(async () => {
     let fetchedTask = await StageToolClient.getTask(task.id.toString())
     await fetchedTask.populate()
     await taskStore.setTask(fetchedTask)
   }, 5000) as unknown as number
 }
+
+watch(
+  () => taskStore.task?.status,
+  async (newStatus) => {
+    if (newStatus === 'completed') {
+      if (intervalId !== null) clearInterval(intervalId)
+      await taskStore.task?.getImages()
+      await taskStore.task?.getVisualizations()
+      router.push(`/output/${taskStore.task?.id}`)
+    }
+  }
+)
 </script>
 <script lang="ts">
 export default {

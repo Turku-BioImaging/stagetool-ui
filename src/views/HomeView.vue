@@ -1,24 +1,15 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 
-import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
 import HomeIntroSection from '../components/HomeIntroSection.vue'
 import HomeAbstractSection from '../components/HomeAbstractSection.vue'
 import SampleImageGrid from '../components/SampleImageGrid.vue'
+import ImageUploader from '../components/ImageUploader.vue'
 import CitationInfo from '../components/CitationInfo.vue'
 import FooterDefault from '../components/FooterDefault.vue'
 const router = useRouter()
-const uploadButtonEnabled = ref(false)
-const selectedFiles = ref<File[]>([])
-
-const taskStore = useTaskStore()
-
-const handleFileChange = (event: Event) => {
-  selectedFiles.value = Array.from((event.target as HTMLInputElement).files || [])
-  uploadButtonEnabled.value = selectedFiles.value.length > 0
-}
 
 const handleProcessIsWaiting = (isWaiting: boolean) => {
   showWaitSpinner.value = isWaiting
@@ -37,28 +28,16 @@ onMounted(async () => {
   }
 })
 
-let intervalId: number | null = null
-
-// watch(
-//   () => taskStore.task?.status,
-//   async (newStatus) => {
-//     if (newStatus === 'completed') {
-//       if (intervalId !== null) clearInterval(intervalId)
-//       await taskStore.task?.getImages()
-//       await taskStore.task?.getVisualizations()
-//       router.push(`/output/${taskStore.task?.id}`)
-//     }
-//   }
-// )
 </script>
 
 <script lang="ts">
 export default {
   components: {
-    SampleImageGrid,
     WaitSpinner,
     HomeIntroSection,
     HomeAbstractSection,
+    SampleImageGrid,
+    ImageUploader,
     FooterDefault
   },
   name: 'HomeView'
@@ -71,31 +50,8 @@ export default {
     <home-abstract-section />
     <citation-info />
     <sample-image-grid @is-waiting="handleProcessIsWaiting" />
-    <section class="upload-container">
-      <div class="mt-6">
-        <h2>Upload your own images</h2>
-        <input
-          type="file"
-          accept="image/tiff, image/png"
-          multiple
-          @change="handleFileChange"
-        /><br />
-        <div class="text-center">
-          <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
-        </div>
-        <div class="info-div">
-          <p>
-            <span class="font-semibold">Image requirements</span>
-          </p>
 
-          <ul>
-            <li>1024 * 1024</li>
-            <li>400x magnification</li>
-            <li>DAPI or related chromatin staining</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <image-uploader @is-waiting="handleProcessIsWaiting" />
 
     <footer-default />
 
