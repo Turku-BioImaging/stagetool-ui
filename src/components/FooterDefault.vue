@@ -21,6 +21,7 @@
           <li>Asst. Prof. Pekka Ruusuvuori, PhD</li>
           <li>Juho-Anti Mäkelä, PhD</li>
           <li>Professor Noora Kotaja, PhD</li>
+          <li><br /></li>
           <li>Pasi Kankaanpää, PhD</li>
           <li>Junel Solis, MD, MSc</li>
           <li>Dado Tokic, MSc</li>
@@ -69,10 +70,14 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 footer.default-footer {
   @apply bg-slate-400 py-16;
   @apply text-slate-700;
+
+  a {
+    @apply text-slate-700 hover:text-slate-900;
+  }
 
   h3.footer-subtitle {
     @apply text-lg font-semibold tracking-widest uppercase text-slate-900;
