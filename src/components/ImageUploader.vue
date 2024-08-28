@@ -1,21 +1,36 @@
 <template>
   <section class="upload-container">
-    <div class="mt-6">
-      <h2>Upload your own images</h2>
-      <input type="file" accept="image/tiff, image/png" multiple @change="handleFileChange" /><br />
-      <div class="text-center">
-        <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
-      </div>
-      <div class="info-div">
-        <p>
-          <span class="font-semibold">Image requirements</span>
-        </p>
+    <div class="container mx-auto">
+      <div class="content-div">
+        <h2>Upload your images</h2>
+        <p>Use StageTool to process your own images.</p>
+        <div class="info-div">
+          <p>
+            <span class="font-semibold">Image requirements</span>
+          </p>
 
-        <ul>
-          <li>1024 * 1024</li>
-          <li>400x magnification</li>
-          <li>DAPI or related chromatin staining</li>
-        </ul>
+          <ul>
+            <li>1024 * 1024</li>
+            <li>400x magnification</li>
+            <li>DAPI or related chromatin staining</li>
+          </ul>
+        </div>
+
+        <div class="file-input">
+          <input
+            type="file"
+            accept="image/tiff, image/png"
+            multiple
+            @change="handleFileChange"
+          /><br />
+          <div class="text-center">
+            <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
+          </div>
+        </div>
+        <p class="mt-6 text-sm italic">
+          Compute resources for this demo are provided by the
+          <a href="https://csc.fi/en/" target="_blank">Centre for Scientific Computing</a>.
+        </p>
       </div>
     </div>
   </section>
@@ -71,4 +86,34 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+section.upload-container {
+  @apply py-12;
+
+  div.content-div {
+    h2 {
+      @apply font-semibold text-3xl uppercase tracking-widest;
+    }
+    @screen lg {
+      @apply w-3/4 mx-auto;
+    }
+
+    div.file-input {
+      @apply flex items-center mt-8;
+    }
+
+    input {
+      @apply bg-slate-100 w-full;
+      height: 3rem;
+      @screen lg {
+        @apply w-1/2;
+      }
+    }
+
+    button {
+      @apply text-center font-semibold bg-rose-500 text-white px-4;
+      height: 3rem;
+    }
+  }
+}
+</style>
