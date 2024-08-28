@@ -1,8 +1,42 @@
 <script setup lang="ts">
-const emit = defineEmits(['imageSelected'])
+import { ref } from 'vue'
+const emit = defineEmits(['is-waiting'])
+import { TaskUploader } from '@/classes/TaskUploader'
+import { StageToolClient } from '../classes/StageToolClient'
+import { useTaskStore } from '../stores/task'
+
+const taskStore = useTaskStore()
+const selectedFiles = ref<File[]>([])
+const showWaitSpinner = ref(false)
+// let intervalId: number | null = null
 
 const sendImageSrc = (event: Event) => {
-  emit('imageSelected', (event.target as HTMLImageElement).src)
+  handleDemoImageClicked((event.target as HTMLImageElement).src)
+}
+const handleDemoImageClicked = async (imageSrc: string) => {
+  emit('is-waiting', true)
+  const response = await fetch(imageSrc)
+  const data = await response.blob()
+  const metadata = { type: data.type }
+  const url = new URL(imageSrc)
+  const filename = url.pathname.split('/').pop() || ''
+  const file = new File([data], filename, metadata)
+  selectedFiles.value = Array.from([file])
+
+  handleUpload()
+}
+
+const handleUpload = async () => {
+  let task = await TaskUploader.upload(selectedFiles.value)
+  taskStore.setTask(task)
+
+  showWaitSpinner.value = true
+
+  intervalId = setInterval(async () => {
+    let fetchedTask = await StageToolClient.getTask(task.id.toString())
+    await fetchedTask.populate()
+    await taskStore.setTask(fetchedTask)
+  }, 5000) as unknown as number
 }
 </script>
 <script lang="ts">
@@ -15,7 +49,7 @@ export default {
     <div class="container mx-auto">
       <div class="image-grid">
         <h2>Try StageTool</h2>
-        <p >
+        <p>
           Choose one of the demo images to see how StageTool works. The selected image is sent to a
           server for artificial intelligence prediction using the StageTool tubule and cell models.
           The results will be shown in a separate page.
@@ -28,7 +62,10 @@ export default {
           <li><img @click="sendImageSrc" src="@/assets/sample-images/05.png" alt="" /></li>
           <li><img @click="sendImageSrc" src="@/assets/sample-images/06.png" alt="" /></li>
         </ul>
-        <p class="mt-6 text-sm italic">Compute resources for this demo are provided by the <a href="https://csc.fi/en/" target="_blank">Centre for Scientific Computing</a>.</p>
+        <p class="mt-6 text-sm italic">
+          Compute resources for this demo are provided by the
+          <a href="https://csc.fi/en/" target="_blank">Centre for Scientific Computing</a>.
+        </p>
       </div>
     </div>
   </div>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
-import { TaskUploader } from '../classes/TaskUploader'
-import { StageToolClient } from '../classes/StageToolClient'
+
 import { useTaskStore } from '../stores/task'
 import { useRouter } from 'vue-router'
 import WaitSpinner from '../components/WaitSpinner.vue'
@@ -13,17 +12,6 @@ import FooterDefault from '../components/FooterDefault.vue'
 const router = useRouter()
 const uploadButtonEnabled = ref(false)
 const selectedFiles = ref<File[]>([])
-const handleDemoImageClicked = async (imageSrc: string) => {
-  const response = await fetch(imageSrc)
-  const data = await response.blob()
-  const metadata = { type: data.type }
-  const url = new URL(imageSrc)
-  const filename = url.pathname.split('/').pop() || ''
-  const file = new File([data], filename, metadata)
-  selectedFiles.value = Array.from([file])
-
-  handleUpload()
-}
 
 const taskStore = useTaskStore()
 
@@ -32,18 +20,8 @@ const handleFileChange = (event: Event) => {
   uploadButtonEnabled.value = selectedFiles.value.length > 0
 }
 
-const handleUpload = async () => {
-  let task = await TaskUploader.upload(selectedFiles.value)
-  taskStore.setTask(task)
-
-  showWaitSpinner.value = true
-
-  intervalId = setInterval(async () => {
-    let fetchedTask = await StageToolClient.getTask(task.id.toString())
-    await fetchedTask.populate()
-    await taskStore.setTask(fetchedTask)
-    // console.log(taskStore.task.status)
-  }, 5000) as unknown as number
+const handleProcessIsWaiting = (isWaiting: boolean) => {
+  showWaitSpinner.value = isWaiting
 }
 
 const showWaitSpinner = ref(false)
@@ -61,17 +39,17 @@ onMounted(async () => {
 
 let intervalId: number | null = null
 
-watch(
-  () => taskStore.task?.status,
-  async (newStatus) => {
-    if (newStatus === 'completed') {
-      if (intervalId !== null) clearInterval(intervalId)
-      await taskStore.task?.getImages()
-      await taskStore.task?.getVisualizations()
-      router.push(`/output/${taskStore.task?.id}`)
-    }
-  }
-)
+// watch(
+//   () => taskStore.task?.status,
+//   async (newStatus) => {
+//     if (newStatus === 'completed') {
+//       if (intervalId !== null) clearInterval(intervalId)
+//       await taskStore.task?.getImages()
+//       await taskStore.task?.getVisualizations()
+//       router.push(`/output/${taskStore.task?.id}`)
+//     }
+//   }
+// )
 </script>
 
 <script lang="ts">
@@ -92,7 +70,7 @@ export default {
     <home-intro-section />
     <home-abstract-section />
     <citation-info />
-    <sample-image-grid @imageSelected="handleDemoImageClicked" />
+    <sample-image-grid @is-waiting="handleProcessIsWaiting" />
     <section class="upload-container">
       <div class="mt-6">
         <h2>Upload your own images</h2>
