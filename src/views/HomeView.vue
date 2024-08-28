@@ -65,39 +65,5 @@ export default {
 div.home-view {
   @apply flex flex-col justify-center;
 
-  div.info-div {
-    @apply mt-6;
-
-    ul {
-      list-style-type: square;
-      @apply ml-6;
-    }
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-
-  section.organization-logos {
-    @apply text-center text-sm px-12 bg-black py-24;
-    img {
-      @apply mx-auto;
-    }
-
-    @screen lg {
-      & > div:nth-child(1) {
-        @apply my-8;
-      }
-
-      p {
-        @apply text-center w-1/3 mx-auto;
-      }
-    }
-  }
 }
 </style>

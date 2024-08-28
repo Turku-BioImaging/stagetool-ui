@@ -4,36 +4,36 @@
     :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen }"
     @click.stop
   >
-    <div class="header">
-      <div class="bars-div pr-2" @click="toggleMenu">
-        <i class="uil uil-bars text-3xl"></i>
+    <div class="container mx-auto">
+      <div class="content-div">
+        <div class="menu-items-lg">
+          <h1><router-link to="/">StageTool</router-link></h1>
+          <ul>
+            <li>
+              <router-link to="/what-is-stagetool">About StageTool</router-link>
+            </li>
+            <li><router-link to="/cell-model">Cell Model</router-link></li>
+            <li>
+              <router-link to="/tubule-model">Tubule Model</router-link>
+            </li>
+            <li>
+              <router-link to="/troubleshooting">Troubleshooting</router-link>
+            </li>
+            <li>
+              <router-link to="/developers-and-funding">Developers &amp; Funding</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
-      <h1><router-link to="/">StageTool</router-link></h1>
-    </div>
-    <div class="menu-items" v-if="menuIsOpen" @click="toggleMenu">
-      <ul>
-        <li>
-          <router-link to="/"><i class="uil uil-home"></i> Home</router-link>
-        </li>
-        <li><router-link to="/what-is-stagetool">What is StageTool?</router-link></li>
-        <li><router-link to="/cell-model">Cell Model</router-link></li>
-        <li><router-link to="/tubule-model">Tubule Model</router-link></li>
-        <li><router-link to="/troubleshooting">Troubleshooting</router-link></li>
-        <!-- <li>Whole-testis analysis & expression profiling</li> -->
-        <li><router-link to="/developers-and-funding">Developers & Funding</router-link></li>
-        <!-- <li>Citation</li> -->
-      </ul>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import type { RouteLocationNormalized } from 'vue-router'
-
 export default {
   data() {
     return {
-      menuIsOpen: false,
+      menuIsOpen: false
       // isTop: true
     }
   },
@@ -43,67 +43,63 @@ export default {
     },
     closeMenu() {
       this.menuIsOpen = false
-    },
-  },
+    }
+  }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 div.navigation-bar {
-  @apply border-b border-slate-800;
-  @apply px-3 py-3;
-  @apply bg-black;
-  // position: sticky;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   z-index: 1000;
-  // background-color: transparent;
-  
-  div.header {
-    @apply flex items-center;
-    h1 {
-      // @apply font-semibold;
-      @apply text-xl font-semibold not-italic text-white;
-      // font-style: normal !important;
-    }
 
-    div.bars-div {
-      cursor: pointer;
-      @apply text-cyan-500;
+  @apply py-3;
+
+  div.content-div {
+    @screen lg {
+      @apply w-3/4 mx-auto;
     }
   }
 
-  div.menu-items {
-    @apply text-lg;
+  div.menu-items-lg {
+    visibility: hidden;
+    @screen lg {
+      visibility: visible;
+    }
 
-    ul {
-      @apply pt-3 pl-3;
-      li {
-        @apply pb-2;
-
-        a {
-          @apply text-white;
-          font-style: normal !important;
-        }
+    @apply flex items-center;
+    h1 {
+      @apply text-2xl font-semibold text-slate-700 uppercase tracking-widest;
+      a {
+        @apply text-slate-700;
       }
     }
 
-    z-index: 500;
-  }
+    ul {
+      @apply flex items-center justify-end;
+      @apply w-full;
 
-  &.menu-is-open {
-    @apply bg-slate-900;
+      li {
+        a {
+          @apply text-slate-700 hover:text-rose-500;
+        }
+      }
+
+      li:not(:first-child) {
+        @apply ml-6;
+      }
+    }
   }
 
   &.menu-is-closed {
-    // @apply bg-slate-900;
-    @apply bg-black;
+    background-color: rgba(255, 255, 255, 0.95);
+    @apply border-slate-100 border-b;
   }
 
   &.is-top {
-    // @apply bg-slate-900;
     @apply border-none;
   }
 }

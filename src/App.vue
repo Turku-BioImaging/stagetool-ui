@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import NavigationBar from './components/NavigationBar.vue'
 </script>
 <script lang="ts">
@@ -11,7 +11,11 @@ export default {
   },
   methods: {
     checkScroll() {
-      if (this.$router.currentRoute.value.path === '/' && window.scrollY <= 200) {
+      const isHomePage = this.$router.currentRoute.value.path === '/'
+      const isScrolled = window.scrollY < 400
+      const isPageShort = document.documentElement.scrollHeight <= window.innerHeight
+
+      if (isHomePage && (isScrolled || isPageShort)) {
         this.menuIsOpen = false
       } else {
         this.menuIsOpen = true
@@ -39,9 +43,5 @@ export default {
 <style lang="scss">
 div.app {
   height: 100vh;
-
-  // div.clear-div {
-  //   @apply mt-24;
-  // }
 }
 </style>
