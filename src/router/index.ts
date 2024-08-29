@@ -6,6 +6,7 @@ import OutputView from '../views/OutputView.vue'
 import { StageToolClient } from '@/classes/StageToolClient'
 import CellModel from '../views/CellModel.vue'
 import TubuleModel from '../views/TubuleModel.vue'
+import Models from '../views/Models.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,26 +26,26 @@ const router = createRouter({
       name: 'what-is-stagetool',
       component: () => import('../views/WhatIsStageTool.vue')
     },
+    // {
+    //   path: '/tubule-model',
+    //   name: 'tubule-model',
+    //   component: TubuleModel
+    // },
     {
-      path: '/tubule-model',
-      name: 'tubule-model',
-      component: TubuleModel
+      path: '/models',
+      name: 'models',
+      component: Models
     },
     {
       path: '/developers-and-funding',
       name: 'developers-and-funding',
       component: () => import('../views/DevelopersAndFundingView.vue')
     },
-    {
-      path: '/cell-model',
-      name: 'cell-model',
-      component: CellModel
-    },
-    {
-      path: '/tubule-model',
-      name: 'tubule-model',
-      component: TubuleModel
-    },
+    // {
+    //   path: '/cell-model',
+    //   name: 'cell-model',
+    //   component: CellModel
+    // },
     {
       path: '/troubleshooting',
       name: 'troubleshooting',
