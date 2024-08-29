@@ -31,10 +31,14 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.checkScroll)
-    // this.checkScroll()
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.checkScroll)
+  },
+  watch: {
+    $route() {
+      this.checkScroll()
+    }
   }
 }
 </script>
