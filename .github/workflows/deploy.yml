@@ -16,6 +16,4 @@ jobs:
           host: ${{ secrets.PROD_SERVER }}
           username: ${{ secrets.PROD_SERVER_USERNAME}}
           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-          script: |
-            whoami
-            cd ~/stagetool-ui
+          script: whoami
