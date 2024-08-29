@@ -54,7 +54,7 @@
             </p>
           </div>
           <div class="org-item">
-            <img src="@/assets/logos/turku_bioimaging_dark_horizontal.jpg" alt="Turku BioImaging" />
+            <img src="@/assets/logos/turku_bioimaging_dark_horizontal.png" alt="Turku BioImaging" />
             <p>
               A broad-based interdisciplinary science and infrastructure umbrella jointly operated
               by Åbo Akademi University and the University of Turku.<br />Turku, Finland

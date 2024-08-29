@@ -85,7 +85,8 @@ export default {}
 </template>
 <style lang="scss">
 div.developers-and-funding-view {
-  @apply px-4 pb-8;
+  // @apply px-4 pb-8;
+  // @apply flex flex-col justify-center;
 
   h1 {
     @apply text-cyan-500 uppercase text-2xl;

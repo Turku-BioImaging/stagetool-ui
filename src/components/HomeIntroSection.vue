@@ -13,7 +13,7 @@
       </div>
       <div><img src="@/assets/logos/UTU_logo_EN_RGB.png" alt="University of Turku" /></div>
       <div>
-        <img src="@/assets/logos/turku_bioimaging_dark_horizontal.jpg" alt="Turku BioImaging" />
+        <img src="@/assets/logos/turku_bioimaging_dark_horizontal.png" alt="Turku BioImaging" />
       </div>
     </div>
   </section>
@@ -75,7 +75,7 @@ section.intro-section {
     @apply pt-12;
 
     img {
-      @apply mx-4 h-16 w-auto;
+      @apply mx-4 h-20 w-auto;
     }
   }
 }
