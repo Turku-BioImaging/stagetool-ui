@@ -36,7 +36,7 @@ div.citation-info {
   }
 
   blockquote {
-    @apply border-l-4 border-rose-500 pl-4 text-2xl font-light;
+    @apply border-l-4 border-rose-500 pl-4 text-xl font-light;
   }
 
 }
