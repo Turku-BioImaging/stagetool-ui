@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="navigation-bar"
-    :class="{ 'menu-is-open': menuIsOpen, 'menu-is-closed': !menuIsOpen }"
-    @click.stop
-  >
+  <div class="navigation-bar">
     <div class="container mx-auto">
       <div class="content-div">
         <div class="menu-items-lg">
@@ -12,10 +8,13 @@
             <li>
               <router-link to="/what-is-stagetool">About StageTool</router-link>
             </li>
-            <li><router-link to="/cell-model">Cell Model</router-link></li>
+            <li>
+              <router-link to="/models">Models</router-link>
+            </li>
+            <!-- <li><router-link to="/cell-model">Cell Model</router-link></li>
             <li>
               <router-link to="/tubule-model">Tubule Model</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link to="/troubleshooting">Troubleshooting</router-link>
             </li>
@@ -29,22 +28,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" scoped>
 export default {
-  data() {
-    return {
-      menuIsOpen: false
-      // isTop: true
-    }
-  },
-  methods: {
-    toggleMenu() {
-      this.menuIsOpen = !this.menuIsOpen
-    },
-    closeMenu() {
-      this.menuIsOpen = false
-    }
-  }
+  name: 'NavigationBar'
 }
 </script>
 
@@ -55,6 +41,8 @@ div.navigation-bar {
   right: 0;
   top: 0;
   z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  @apply border-slate-100 border-b;
 
   @apply py-3;
 
@@ -94,13 +82,13 @@ div.navigation-bar {
     }
   }
 
-  &.menu-is-closed {
-    background-color: rgba(255, 255, 255, 0.95);
-    @apply border-slate-100 border-b;
-  }
+  // &.menu-is-closed {
+  //   background-color: rgba(255, 255, 255, 0.95);
+  //   @apply border-slate-100 border-b;
+  // }
 
-  &.is-top {
-    @apply border-none;
-  }
+  // &.is-top {
+  //   @apply border-none;
+  // }
 }
 </style>
