@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-const emit = defineEmits(['is-waiting'])
+import { useRouter } from 'vue-router'
 import { TaskUploader } from '../classes/TaskUploader'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
-import { useRouter } from 'vue-router'
 
+const emit = defineEmits(['is-waiting'])
 const router = useRouter()
 const taskStore = useTaskStore()
 const selectedFiles = ref<File[]>([])
