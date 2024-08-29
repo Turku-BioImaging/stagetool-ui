@@ -8,14 +8,16 @@ html {
 
 body {
   // @apply bg-slate-900;
-  @apply bg-black;
-  @apply text-slate-200;
+  // @apply bg-black;
+  @apply bg-slate-50;
+  // @apply text-slate-200;
+  @apply text-slate-700;
   font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.125rem;
 
   a {
     // @apply italic text-cyan-400;
-    // @apply text-cyan-400;
+    @apply text-rose-500;
   }
 }
