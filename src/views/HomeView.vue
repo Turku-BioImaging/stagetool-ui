@@ -53,7 +53,6 @@ export default {
     <image-uploader @is-waiting="handleProcessIsWaiting" />
 
     <citation-info />
-    <footer-default />
 
     <transition name="fade">
       <wait-spinner v-if="showWaitSpinner"></wait-spinner>
@@ -64,6 +63,5 @@ export default {
 <style lang="scss">
 div.home-view {
   @apply flex flex-col justify-center;
-
 }
 </style>

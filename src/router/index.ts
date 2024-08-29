@@ -4,8 +4,8 @@ import HomeView from '../views/HomeView.vue'
 import OutputView from '../views/OutputView.vue'
 // import WhatIsStageTool from '../views/WhatIsStageTool.vue'
 import { StageToolClient } from '@/classes/StageToolClient'
-import CellModel from '../views/CellModel.vue'
-import TubuleModel from '../views/TubuleModel.vue'
+// import CellModel from '../views/CellModel.vue'
+// import TubuleModel from '../views/TubuleModel.vue'
 import Models from '../views/Models.vue'
 
 const router = createRouter({
@@ -46,11 +46,11 @@ const router = createRouter({
     //   name: 'cell-model',
     //   component: CellModel
     // },
-    {
-      path: '/troubleshooting',
-      name: 'troubleshooting',
-      component: () => import('../views/TroubleshootingView.vue')
-    }
+    // {
+    //   path: '/troubleshooting',
+    //   name: 'troubleshooting',
+    //   component: () => import('../views/TroubleshootingView.vue')
+    // }
   ]
 })
 

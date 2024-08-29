@@ -15,9 +15,9 @@
             <li>
               <router-link to="/tubule-model">Tubule Model</router-link>
             </li> -->
-            <li>
+            <!-- <li>
               <router-link to="/troubleshooting">Troubleshooting</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link to="/developers-and-funding">Developers &amp; Funding</router-link>
             </li>
