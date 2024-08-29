@@ -16,4 +16,9 @@ jobs:
           host: ${{ secrets.PROD_SERVER }}
           username: ${{ secrets.PROD_SERVER_USERNAME}}
           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-          script: whoami
+          script: |
+            cd ~/stagetool-ui
+            git reset --hard HEAD
+            git pull
+            docker build . -t stagetool-ui
+            docker compose up -d
