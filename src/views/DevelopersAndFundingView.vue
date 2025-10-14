@@ -32,6 +32,7 @@ export default {}
             <li>Pasi Kankaanpää, PhD</li>
             <li>Junel Solis, MD, MSc</li>
             <li>Dado Tokic, MSc</li>
+            <li>Chris Buehling, MSc</li>
           </ul>
         </div>
       </div>

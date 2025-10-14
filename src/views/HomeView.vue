@@ -47,7 +47,6 @@ export default {
   <div class="home-view">
     <home-intro-section />
     <home-abstract-section />
-    <citation-info />
     <sample-image-grid @is-waiting="handleProcessIsWaiting" />
 
     <image-uploader @is-waiting="handleProcessIsWaiting" />
