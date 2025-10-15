@@ -26,6 +26,7 @@
             <li>Pasi Kankaanpää, PhD</li>
             <li>Junel Solis, MD, MSc</li>
             <li>Dado Tokic, MSc</li>
+            <li>Chris Buehling, MSc</li>
           </ul>
 
           <h3 class="footer-subtitle mt-12">Funding</h3>

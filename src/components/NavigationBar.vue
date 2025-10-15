@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div class="content-div">
         <div class="menu-items-lg">
-          <h1><router-link to="/">StageTool</router-link></h1>
+          <h1><a href="/">StageTool</a></h1>
           <ul>
             <li>
               <router-link to="/what-is-stagetool">About StageTool</router-link>

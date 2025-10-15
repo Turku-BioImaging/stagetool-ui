@@ -54,9 +54,11 @@
           affected, the data produced by STAGETOOL should be interpreted with caution.
         </p>
         <p class="mt-6">
-          For optimal performance, make sure your image is of correct size (1024x1024 pixels), not
-          overexposed (the number of saturated pixels should be kept x%) and representing xx% of any
-          single tubule cross-section. It is critically importnt to use ⨯400 magnification (10⨯
+          For optimal performance, make sure your image is of correct size (1024x1024 pixels) and 
+          that its zoom level, resolution, pixelation, and illumination are similar to the 
+          example images. As a rough estimate, the average diameter of a round spermatid should 
+          be around 45 pixels (on typical 40× objective images of 1024×1024 pixels). 
+          It is critically important to use ⨯400 magnification (10⨯
           ocular plus 40⨯ objective). Also, use of transverse sections and avoid longitudinal
           sections because they might host more than one stage.
         </p>
