@@ -15,6 +15,8 @@ export default {
 
 <template>
   <div class="vis-viewer-component">
-    <img :src="visImgSrc" alt="" />
+    <a download="result.png" :href=visImgSrc>
+      <img :src="visImgSrc" alt="" />
+    </a>
   </div>
 </template>
