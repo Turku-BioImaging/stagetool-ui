@@ -74,6 +74,7 @@ watch(
       if (intervalId !== null) clearInterval(intervalId)
       await taskStore.task?.getImages()
       await taskStore.task?.getVisualizations()
+      await taskStore.task?.getResults()
       router.push(`/output/${taskStore.task?.id}`)
     }
   }

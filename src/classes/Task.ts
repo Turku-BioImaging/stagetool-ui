@@ -31,6 +31,7 @@ interface TaskData {
   image_filenames: string[]
   visualization_filenames?: string[]
   results?: Results
+  resultsJSON?: string[]
 }
 
 export class Task {
@@ -38,7 +39,7 @@ export class Task {
   status: TaskStatus
   image_filenames: string[]
   visualization_filenames?: string[]
-  // results: string[]
+  resultsJSON: string[]
   results?: Results
   image_sources: string[] = []
   visualization_sources: string[] = []
@@ -60,6 +61,7 @@ export class Task {
     this.image_filenames = data.image_filenames || []
     this.visualization_filenames = data.visualization_filenames || []
     this.results = data.results || {}
+    this.resultsJSON = data.resultsJSON || []
   }
 
   /**
@@ -75,6 +77,7 @@ export class Task {
       this.image_filenames = data.image_filenames
       this.visualization_filenames = data.visualization_filenames
       this.results = data.results
+      //this.resultsJSON = data.resultsJSON
     } catch (error) {
       console.error(`Failed to update task ${this.id}:`, error)
     }
@@ -131,5 +134,26 @@ export class Task {
 
     this.visualization_sources = await Promise.all(visualizationPromises)
     return this.visualization_sources
+  }
+
+/**
+   * Retrieves the results of the task.
+   * @returns A promise that resolves to an array of strings representing the results sources.
+   */
+  async getResults(): Promise<string[] | null> {
+    const filenames = "results.json"
+
+    const taskId = this.id
+    const filenamesArray = Array.isArray(filenames) ? filenames : [filenames]
+    const resultPromises = filenamesArray.map(async (filenames) => {
+      const response = await StageToolClient.getResults(taskId)
+
+      const blob = new Blob([response.data], { type: response.headers['content-type'] })
+
+      return URL.createObjectURL(blob)
+    })
+
+    this.resultsJSON = await Promise.all(resultPromises)
+    return this.resultsJSON
   }
 }
