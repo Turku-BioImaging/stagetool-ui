@@ -63,6 +63,7 @@ router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormali
       await fetchedTask.populate()
       await fetchedTask.getImages()
       await fetchedTask.getVisualizations()
+      await fetchedTask.getResults()
       await store.setTask(fetchedTask)
       next()
     } catch (error) {

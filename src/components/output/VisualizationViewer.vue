@@ -14,7 +14,9 @@ export default {
 </script>
 
 <template>
-  <div class="vis-viewer-component">
-    <img :src="visImgSrc" alt="" />
+  <div class="vis-viewer-component" style="display: inline-block">
+    <a download="result.png" :href=visImgSrc style="width: 100%">
+      <img :src="visImgSrc" alt="" />
+    </a>
   </div>
 </template>

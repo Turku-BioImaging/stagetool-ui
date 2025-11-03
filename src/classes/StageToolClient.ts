@@ -53,4 +53,16 @@ export class StageToolClient {
 
     return response
   }
+
+  static async getResults(taskId: string): Promise<AxiosResponse> {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const response: AxiosResponse = await axios.get(`${baseUrl}/results`, {
+      params: {
+        task_id: taskId
+      },
+      responseType: 'arraybuffer' // to handle binary data
+    })
+
+    return response
+  }
 }
