@@ -38,7 +38,7 @@
         </p>
         <p class="mt-6">
           The development of the cell and tubule models which together comprise StageTool has been
-          described in <a href="" target="_blank">Meikar, Majoral et al. 2022</a>
+          described in <a href="https://pubmed.ncbi.nlm.nih.gov/36461763/" target="_blank">Meikar, Majoral et al. 2022</a>
         </p>
       </div>
     </div>

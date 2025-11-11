@@ -30,11 +30,11 @@
 
         <p class="mt-12">
           Mouse seminiferous epithelial cycle can be divided into 12 (I-XII) stages. For more
-          information see <a href="">Meistrich and Hess, 2013</a> and
-          <a href="">Mäkelä et al. 2020</a>. StageTool is able to classify a DAPI-stained
+          information see <a href="https://pubmed.ncbi.nlm.nih.gov/22992924/" target="_blank">Meistrich and Hess, 2013</a> and
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33104058/" target="_blank">Mäkelä et al. 2020</a>. StageTool is able to classify a DAPI-stained
           seminiferous tubule into five categories: I-V, VI-VIII, IX, X-XI, and XII. The development
           of the cell and tubule models which together comprise StageTool has been described in
-          <a href="">Meikar, Majoral et al. 2022</a>.
+          <a href="https://pubmed.ncbi.nlm.nih.gov/36461763/" target="_blank">Meikar, Majoral et al. 2022</a>.
         </p>
 
         <h2 class="mt-16">Applications</h2>

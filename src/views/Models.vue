@@ -16,7 +16,7 @@
               >Mäkelä et al. 2020</a
             >. The development of the cell and tubule models which together comprise StageTool has
             been described in
-            <a href="http://localhost:5173/tubule-model" taget="_blank"
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36461763/" target="_blank"
               >Meikar, Majoral et al. 2022</a
             >.
           </p>
@@ -42,6 +42,7 @@
               <p>XII</p>
             </div>
           </div>
+          <div id="Cell-Model-Divider"></div>
         </div>
         <div class="mt-24">
           <h2>Cell Model</h2>
