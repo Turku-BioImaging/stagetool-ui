@@ -5,11 +5,11 @@
         <div class="link-list">
           <h3 class="footer-subtitle">Home</h3>
           <ul>
-            <li><a href="">What is StageTool?</a></li>
-            <li><a href="">Cell Model</a></li>
-            <li><a href="">Tubule Model</a></li>
-            <li><a href="">Troubleshooting</a></li>
-            <li><a href="">Developers &amp; Funding</a></li>
+            <li><a href="/what-is-stagetool">What is StageTool?</a></li>
+            <li><a href="/models#Cell-Model-Divider">Cell Model</a></li>
+            <li><a href="/models">Tubule Model</a></li>
+            <!-- <li><a href="">Troubleshooting</a></li> -->
+            <li><a href="/developers-and-funding">Developers &amp; Funding</a></li>
           </ul>
         </div>
         <div class="devs-list">
