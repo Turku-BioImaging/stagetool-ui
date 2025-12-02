@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject,computed } from 'vue'
 import { StageToolClient } from '../classes/StageToolClient'
 import { useTaskStore } from '../stores/task'
 import { Task } from '../classes/Task'
@@ -8,12 +8,22 @@ import VisualizationViewer from '../components/output/VisualizationViewer.vue'
 import TubuleClassification from '../components/output/TubuleClassification.vue'
 import TubuleDataTable from '../components/output/TubuleDataTable.vue'
 import DownloadFunctionality from '../components/output/DownloadFunctionality.vue'
+import ErrorMessageViewer from '@/components/output/ErrorMessageViewer.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const store = useTaskStore()
+
+const valid = computed(() => {
+  if (store.task?.visualization_sources && (store.task?.visualization_sources?.length < store.task?.image_filenames?.length*2)) {
+    return false
+    }
+  return true
+  })
+
+
 </script>
 <template>
-  <div class="output-view">
+  <div class="output-view" v-if="valid">
     <section class="image-selector">
       <ImageSelector v-if="store.task && store.task.image_sources" />
     </section>
@@ -28,6 +38,11 @@ const store = useTaskStore()
     </section>
     <section class="tubule-data-tables mt-4">
       <TubuleDataTable v-if="store.task && store.task.results" />
+    </section>
+  </div>
+  <div class="output-view" v-else>
+    <section class="errormessage-viewer-component">
+      <ErrorMessageViewer v-if="store.task && store.task.image_sources" />
     </section>
   </div>
 </template>
