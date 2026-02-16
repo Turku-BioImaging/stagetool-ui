@@ -19,7 +19,7 @@
         <div class="file-input">
           <input
             type="file"
-            accept="image/tiff, image/png"
+            accept="image/tiff, image/png, image/jpg, image/tif"
             multiple
             @change="handleFileChange"
           /><br />

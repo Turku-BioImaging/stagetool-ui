@@ -13,19 +13,19 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const store = useTaskStore()
 
-const valid = computed(() => {
+/* const valid = computed(() => {
   if (store.task?.visualization_sources && (store.task?.visualization_sources?.length < store.task?.image_filenames?.length*2)) {
     return false
     }
   return true
-  })
+  }) */
 
 
 </script>
 <template>
-  <div class="output-view" v-if="valid">
+  <div class="output-view">
     <section class="image-selector">
-      <ImageSelector v-if="store.task && store.task.image_sources" />
+      <ImageSelector />
     </section>
     <section class="vis-viewer-section mt-4">
       <VisualizationViewer v-if="store.task && store.task.visualization_sources" />
@@ -40,11 +40,11 @@ const valid = computed(() => {
       <TubuleDataTable v-if="store.task && store.task.results" />
     </section>
   </div>
-  <div class="output-view" v-else>
+  <!-- <div class="output-view" v-else>
     <section class="errormessage-viewer-component">
       <ErrorMessageViewer v-if="store.task && store.task.image_sources" />
     </section>
-  </div>
+  </div> -->
 </template>
 
 <style lang='scss'>

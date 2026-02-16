@@ -51,6 +51,9 @@ export default {
 </script>
 <template>
   <div class="tubule-classification">
+    <h1 class="font-bold">
+      Tubule Data for Image {{ selectedImageFilename }}
+    </h1>
     <h2 class="font-semibold text-lg">
       Tubules <span class="italic">({{ tubuleCount }})</span>
     </h2>
