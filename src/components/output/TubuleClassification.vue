@@ -50,10 +50,10 @@ export default {
 }
 </script>
 <template>
-  <div class="tubule-classification">
-    <h1 class="font-bold">
-      Tubule Data for Image {{ selectedImageFilename }}
-    </h1>
+  <h1 class="font-bold">
+    Tubule Data for Image {{ selectedImageFilename }}
+  </h1>
+  <div class="tubule-classification" v-if="tubuleObjects.length != 0">
     <h2 class="font-semibold text-lg">
       Tubules <span class="italic">({{ tubuleCount }})</span>
     </h2>
@@ -62,5 +62,8 @@ export default {
         Tubule {{ tub.id }}: {{ tub.class }} ({{ (tub.score * 100).toFixed(2) }}%)
       </li>
     </ul>
+  </div>
+  <div v-else>
+    The Tubule data for this image could not be generated, most likely because the image did not meet the input specifications.
   </div>
 </template>

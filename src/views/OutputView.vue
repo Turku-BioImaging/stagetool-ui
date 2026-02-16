@@ -23,15 +23,16 @@ const store = useTaskStore()
 
 </script>
 <template>
+  <div class="h-16 ..."></div>
   <div class="output-view">
+    <section class="downloads-section">
+      <DownloadFunctionality v-if="store.task && store.task.results" />
+    </section>
     <section class="image-selector">
       <ImageSelector />
     </section>
     <section class="vis-viewer-section mt-4">
       <VisualizationViewer v-if="store.task && store.task.visualization_sources" />
-    </section>
-    <section class="downloads-section">
-      <DownloadFunctionality v-if="store.task && store.task.results" />
     </section>
     <section class="tubule-classifications mt-4">
       <TubuleClassification v-if="store.task && store.task.results" />
@@ -51,4 +52,6 @@ const store = useTaskStore()
 div.output-view {
   @apply p-3;
 }
+
+
 </style>

@@ -22,7 +22,7 @@ export default {
     </p>
     <p>
       <a download="results.json" :href=resSrc>
-        Click here to download all the resulting data Tubule as a json.<br />
+        Click here to download all the resulting Tubule data as a json.<br />
       </a>
       To show the Tubule data below, click on the original image.
     </p>
