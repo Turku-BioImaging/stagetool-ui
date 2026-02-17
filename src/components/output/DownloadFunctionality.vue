@@ -7,7 +7,7 @@ import { useTaskStore } from '../../stores/task'
 const store = useTaskStore()
 
 let resSrc = computed(() => store.task?.resultsJSON[0])
-let imgSrc = computed(() => store.task?.visualization_sources?.[store.selectedImageIndex])
+let len = store.task?.visualization_sources?.length ?? 0
 </script>
 
 <script lang="ts">
@@ -16,7 +16,7 @@ export default {
 }
 </script>
 <template>
-  <div class="download-component">
+  <div class="download-component" v-if="len > 1" >
     <p>
       Click on an resulting image to download it.
     </p>

@@ -16,10 +16,12 @@ export default {
 
 <template>
   <div class="grid grid-cols-3 gap-2">
-    <div class="vis-viewer-component" style="display: inline-block"  v-for="n in len/2" :key="n" >
-      <a download="result.png" :href=store.task?.visualization_sources?.[n-1] style="width: 100%">
-        <img :src="store.task?.visualization_sources?.[n-1]" alt="" width="1024" height="1024"/>
-      </a>
-    </div>
+    <template v-for="n in len" :key="n">
+      <div class="vis-viewer-component" style="display: inline-block" v-if="!store.task?.visualization_filenames?.[n-1].startsWith('pred_')">
+        <a download="result.png" :href=store.task?.visualization_sources?.[n-1] style="width: 100%" >
+          <img :src="store.task?.visualization_sources?.[n-1]" alt="" width="1024" height="1024"/>
+        </a>
+      </div>
+    </template>
   </div>
 </template>

@@ -23,7 +23,7 @@ export default {
         @click="handleClick(idx)"
         :key="idx"
       >
-        <img :src="imgSrc" alt="" />
+        <img :src="imgSrc" alt="" width="1024" height="1024"/>
         <p class="mt-2 font-semibold text-xs text-center">
           {{ taskStore.task?.image_filenames[idx] }}
         </p>
