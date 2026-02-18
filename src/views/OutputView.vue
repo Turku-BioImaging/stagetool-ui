@@ -29,9 +29,11 @@ const store = useTaskStore()
       <DownloadFunctionality v-if="store.task && store.task.results" />
     </section>
     <section class="image-selector">
+      Input:
       <ImageSelector />
     </section>
     <section class="vis-viewer-section mt-4">
+      Results:
       <VisualizationViewer v-if="store.task && store.task.visualization_sources" />
     </section>
     <section class="tubule-classifications mt-4">

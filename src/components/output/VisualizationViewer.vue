@@ -21,6 +21,9 @@ export default {
         <a download="result.png" :href=store.task?.visualization_sources?.[n-1] style="width: 100%" >
           <img :src="store.task?.visualization_sources?.[n-1]" alt="" width="1024" height="1024"/>
         </a>
+        <p class="mt-2 font-semibold text-xs text-center">
+          {{ store.task?.visualization_filenames?.[n-1] }}
+        </p>
       </div>
     </template>
   </div>
