@@ -19,7 +19,7 @@
         <div class="file-input">
           <input
             type="file"
-            accept="image/tiff, image/png"
+            accept="image/tiff, image/png, image/jpg, image/tif"
             multiple
             @change="handleFileChange"
           /><br />
@@ -52,7 +52,13 @@ let intervalId: number | null = null
 
 const handleFileChange = (event: Event) => {
   selectedFiles.value = Array.from((event.target as HTMLInputElement).files || [])
-  uploadButtonEnabled.value = selectedFiles.value.length > 0
+  var file_endings_ok = true
+  for (var i = 0; i < selectedFiles.value.length; i++) {
+    if (!(selectedFiles.value[i].name.includes(".jpg") || selectedFiles.value[i].name.includes(".png") || selectedFiles.value[i].name.includes(".tif") || selectedFiles.value[i].name.includes(".tiff"))) {
+      file_endings_ok = false
+    }
+  }
+  uploadButtonEnabled.value = (selectedFiles.value.length > 0) && (file_endings_ok)
 }
 
 const handleUpload = async () => {
