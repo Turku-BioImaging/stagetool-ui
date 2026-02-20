@@ -64,6 +64,6 @@ export default {
     </ul>
   </div>
   <div v-else>
-    The Tubule data for this image could not be generated, most likely because the image did not meet the input specifications.
+    The Tubule data for this image could not be generated. Please check the "Results" section for the reason.
   </div>
 </template>
