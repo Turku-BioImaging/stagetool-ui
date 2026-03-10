@@ -27,6 +27,9 @@
             <button :disabled="!uploadButtonEnabled" @click="handleUpload">Upload</button>
           </div>
         </div>
+        <p v-if="!uploadButtonEnabled" class="mt-5 text-sm italic">
+          Please make sure that the files have distinct filenames and the following fileendings: .jpg, .png, .tif, .tiff 
+        </p>
         <p class="mt-6 text-sm italic">
           Compute resources for this demo are provided by the
           <a href="https://csc.fi/en/" target="_blank">Centre for Scientific Computing</a>.
@@ -53,9 +56,15 @@ let intervalId: number | null = null
 const handleFileChange = (event: Event) => {
   selectedFiles.value = Array.from((event.target as HTMLInputElement).files || [])
   var file_endings_ok = true
+  const file_names: string [] = []
   for (var i = 0; i < selectedFiles.value.length; i++) {
     if (!(selectedFiles.value[i].name.includes(".jpg") || selectedFiles.value[i].name.includes(".png") || selectedFiles.value[i].name.includes(".tif") || selectedFiles.value[i].name.includes(".tiff"))) {
       file_endings_ok = false
+    }
+    if (file_names.indexOf(selectedFiles.value[i].name.split('.')[0]) > -1) {
+      file_endings_ok = false
+    } else {
+      file_names.push(selectedFiles.value[i].name.split('.')[0])
     }
   }
   uploadButtonEnabled.value = (selectedFiles.value.length > 0) && (file_endings_ok)
