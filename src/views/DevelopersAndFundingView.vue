@@ -25,14 +25,14 @@ export default {}
             <li>Olli Heikkinen, BMed</li>
             <li>Sini Leskinen, BMed</li>
             <li>Asst. Prof. Pekka Ruusuvuori, PhD</li>
-            <li>Juho-Anti Mäkelä, PhD</li>
+            <li>Juho-Antti Mäkelä, PhD</li>
             <li>Professor Noora Kotaja, PhD</li>
           </ul>
           <ul>
             <li>Pasi Kankaanpää, PhD</li>
             <li>Junel Solis, MD, MSc</li>
             <li>Dado Tokic, MSc</li>
-            <li>Chris Buehling, MSc</li>
+            <li>Chris Bühling, MSc</li>
           </ul>
         </div>
       </div>
