@@ -10,8 +10,10 @@ export default {}
             Using STAGETOOL is easy:<br />
             To try out one of the sample images, simply click on one of the 6 images under the "TRY STAGETOOL" section.<br />
             <br />
-            To upload you own images, just click on the "Browse" button in the "UPLOAD YOUR IMAGES" section. You can upload as many images as you like.<br />
-            Then, simply click the "Upload" button. After all images have been preocessed, you will be presented with the results.<br />
+            You can also upload your own images. Simply click on the "Browse" button in the "UPLOAD YOUR IMAGES" section. You can upload as many images as you like,<br />
+            but make sure to follow the image requirements and supported file formats. If the file format of one or more images is not supported, the "Upload" button will not work.<br />
+            <br />
+            Then, simply click the "Upload" button. After all images have been processed, you will be presented with the results.<br />
             <br />
           <h3>Results</h3>
             Once all images have been processed, you will find a short explanation at the top of the page.<br />
