@@ -21,6 +21,9 @@
             <li>
               <router-link to="/developers-and-funding">Developers &amp; Funding</router-link>
             </li>
+            <li>
+              <router-link to="/Tutorial-and-help">Tutorial &amp; Help</router-link>
+            </li>
           </ul>
         </div>
       </div>

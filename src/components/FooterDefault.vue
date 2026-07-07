@@ -10,6 +10,7 @@
             <li><a href="/models">Tubule Model</a></li>
             <!-- <li><a href="">Troubleshooting</a></li> -->
             <li><a href="/developers-and-funding">Developers &amp; Funding</a></li>
+            <li><a href="/tutorial-and-help">Tutorial &amp; Help</a></li>
           </ul>
         </div>
         <div class="devs-list">
@@ -20,13 +21,13 @@
             <li>Olli Heikkinen, BMed</li>
             <li>Sini Leskinen, BMed</li>
             <li>Asst. Prof. Pekka Ruusuvuori, PhD</li>
-            <li>Juho-Anti Mäkelä, PhD</li>
+            <li>Juho-Antti Mäkelä, PhD</li>
             <li>Professor Noora Kotaja, PhD</li>
             <li><br /></li>
             <li>Pasi Kankaanpää, PhD</li>
             <li>Junel Solis, MD, MSc</li>
             <li>Dado Tokic, MSc</li>
-            <li>Chris Buehling, MSc</li>
+            <li>Chris Bühling, MSc</li>
           </ul>
 
           <h3 class="footer-subtitle mt-12">Funding</h3>
