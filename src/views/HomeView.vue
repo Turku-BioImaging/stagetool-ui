@@ -46,10 +46,11 @@ export default {
 <template>
   <div class="home-view">
     <home-intro-section />
-    <home-abstract-section />
+    <image-uploader @is-waiting="handleProcessIsWaiting" />
+
     <sample-image-grid @is-waiting="handleProcessIsWaiting" />
 
-    <image-uploader @is-waiting="handleProcessIsWaiting" />
+    <home-abstract-section />
 
     <citation-info />
 
