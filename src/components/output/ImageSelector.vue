@@ -15,11 +15,11 @@ export default {
 </script>
 
 <template>
-  <div class="image-selector-component" v-if="taskStore.task?.image_sources">
+  <div class="image-selector-component" v-if="taskStore.task?.imageconversion_sources">
     <div class="grid grid-cols-9 gap-2">
       <div
         class="image-item"
-        v-for="(imgSrc, idx) in taskStore.task.image_sources"
+        v-for="(imgSrc, idx) in taskStore.task.imageconversion_sources"
         @click="handleClick(idx)"
         :key="idx"
       >

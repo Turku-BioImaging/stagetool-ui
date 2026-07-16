@@ -30,6 +30,8 @@ interface TaskData {
   status: TaskStatus
   image_filenames: string[]
   visualization_filenames?: string[]
+  resultconversion_filenames?: string[]
+  imageconversion_filenames?: string[]
   results?: Results
   resultsJSON?: string[]
 }
@@ -39,10 +41,14 @@ export class Task {
   status: TaskStatus
   image_filenames: string[]
   visualization_filenames?: string[]
+  resultconversion_filenames?: string[]
+  imageconversion_filenames?: string[]
   resultsJSON: string[]
   results?: Results
   image_sources: string[] = []
   visualization_sources: string[] = []
+  resultconversion_sources: string[] = []
+  imageconversion_sources: string[] = []
   // private _apiClient: StageToolClient
 
   /**
@@ -53,6 +59,8 @@ export class Task {
    *   - status: The status of the task, as a string.
    *   - images: An array of image filenames associated with the task.
    *   - visualizations: An array of visualization filenames associated with the task.
+   *   - resultconversions: An Array of resultconversion filenames associated with the task.
+   *   - imageconversions: An Array of imageconversion filenames associated with the task.
    *   - results: An array of results associated with the task.
    */
   constructor(data: TaskData) {
@@ -60,6 +68,8 @@ export class Task {
     this.status = data.status || 'pending'
     this.image_filenames = data.image_filenames || []
     this.visualization_filenames = data.visualization_filenames || []
+    this.resultconversion_filenames = data.resultconversion_filenames || []
+    this.imageconversion_filenames = data.imageconversion_filenames || []
     this.results = data.results || {}
     this.resultsJSON = data.resultsJSON || []
   }
@@ -76,6 +86,8 @@ export class Task {
 
       this.image_filenames = data.image_filenames
       this.visualization_filenames = data.visualization_filenames
+      this.resultconversion_filenames = data.resultconversion_filenames
+      this.imageconversion_filenames = data.imageconversion_filenames
       this.results = data.results
       //this.resultsJSON = data.resultsJSON
     } catch (error) {
@@ -134,6 +146,56 @@ export class Task {
 
     this.visualization_sources = await Promise.all(visualizationPromises)
     return this.visualization_sources
+  }
+
+  /**
+   * Retrieves the preview result for the task.
+   * @returns A promise that resolves to an array of strings representing the preview result sources.
+   */
+  async getResultConversions(): Promise<string[] | null> {
+    const filenames = this.resultconversion_filenames
+    if (this.resultconversion_sources.length == this.resultconversion_filenames?.length) {
+      return this.resultconversion_sources
+    }
+
+    const taskId = this.id
+    const filenamesArray = Array.isArray(filenames) ? filenames : [filenames]
+
+    const ResultConversionPromises = filenamesArray.map(async (filename) => {
+      const response = await StageToolClient.getResultConversions(taskId, filename as string)
+
+      const blob = new Blob([response.data], { type: response.headers['content-type'] })
+
+      return URL.createObjectURL(blob)
+    })
+
+    this.resultconversion_sources = await Promise.all(ResultConversionPromises)
+    return this.resultconversion_sources
+  }
+
+  /**
+   * Retrieves the preview image for the task.
+   * @returns A promise that resolves to an array of strings representing the preview image sources.
+   */
+  async getImageConversions(): Promise<string[] | null> {
+    const filenames = this.imageconversion_filenames
+    if (this.imageconversion_sources.length == this.imageconversion_filenames?.length) {
+      return this.imageconversion_sources
+    }
+
+    const taskId = this.id
+    const filenamesArray = Array.isArray(filenames) ? filenames : [filenames]
+
+    const ImageConversionPromises = filenamesArray.map(async (filename) => {
+      const response = await StageToolClient.getImageConversions(taskId, filename as string)
+
+      const blob = new Blob([response.data], { type: response.headers['content-type'] })
+
+      return URL.createObjectURL(blob)
+    })
+
+    this.imageconversion_sources = await Promise.all(ImageConversionPromises)
+    return this.imageconversion_sources
   }
 
 /**

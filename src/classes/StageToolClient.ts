@@ -54,6 +54,32 @@ export class StageToolClient {
     return response
   }
 
+  static async getResultConversions(taskId: string, filename: string): Promise<AxiosResponse> {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const response: AxiosResponse = await axios.get(`${baseUrl}/resultconversions`, {
+      params: {
+        task_id: taskId,
+        filename: filename
+      },
+      responseType: 'arraybuffer' // to handle binary data
+    })
+
+    return response
+  }
+
+  static async getImageConversions(taskId: string, filename: string): Promise<AxiosResponse> {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const response: AxiosResponse = await axios.get(`${baseUrl}/imageconversions`, {
+      params: {
+        task_id: taskId,
+        filename: filename
+      },
+      responseType: 'arraybuffer' // to handle binary data
+    })
+
+    return response
+  }
+
   static async getResults(taskId: string): Promise<AxiosResponse> {
     const baseUrl = import.meta.env.VITE_API_BASE_URL
     const response: AxiosResponse = await axios.get(`${baseUrl}/results`, {
