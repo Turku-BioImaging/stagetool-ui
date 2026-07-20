@@ -21,8 +21,8 @@ export default {
 <template>
   <div class="grid grid-cols-3 gap-2">
     <div class="vis-viewer-component" style="display: inline-block" >
-      <a :download="['result', visImgSrc].join('-')" :href=visImgSrc style="width: 100%" v-if="!outName?.endsWith('error.txt')">
-        <img :src="ResConImgSrc" alt="" width="1024" height="1024"/>
+      <a :download="['result', selectedName].join('-')" :href=visImgSrc style="width: 100%" v-if="!outName?.endsWith('error.txt')">
+        <img :src="ResConImgSrc" alt="" width="1024" height="1024" />
       </a>
       <div width="1024" height="1024" v-else>
         Image {{ selectedName }} could not be processed. The corresponding error is:
@@ -30,6 +30,7 @@ export default {
           Could not read the error message.
         </object>          
       </div>
+      Image {{ store.task?.visualization_sources }}
     </div>
   </div>
 </template>
