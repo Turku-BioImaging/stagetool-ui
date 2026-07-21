@@ -3,13 +3,16 @@ import { computed } from 'vue'
 import { useTaskStore } from '../../stores/task'
 
 const store = useTaskStore()
-let visImgSrc = computed(() => store.task?.visualization_sources?.[store.selectedImageIndex])
-let outName = computed(() => store.task?.visualization_filenames?.[store.selectedImageIndex])
-let ResConImgSrc = computed(() => store.task?.resultconversion_sources?.[store.selectedImageIndex])
-let ResConImgName = computed(() => store.task?.resultconversion_filenames?.[store.selectedImageIndex])
-let selectedName = computed(() => store.task?.image_filenames[store.selectedImageIndex])
+let idx = computed(() => store.selectedImageIndex)
 
+let imgConvName = computed(() => store.task?.imageconversion_filenames?.[idx.value]!)
+let newIdx = computed(() => store.task?.resultconversion_filenames?.indexOf(imgConvName!.value)!)
 
+let visImgSrc = computed(() => store.task?.visualization_sources?.[newIdx.value])
+let outName = computed(() => store.task?.visualization_filenames?.[newIdx.value])
+let ResConImgSrc = computed(() => store.task?.resultconversion_sources?.[newIdx.value])
+let ResConImgName = computed(() => store.task?.resultconversion_filenames?.[newIdx.value])
+let selectedName = computed(() => store.task?.image_filenames[newIdx.value])
 </script>
 
 <script lang="ts">
@@ -25,12 +28,11 @@ export default {
         <img :src="ResConImgSrc" alt="" width="1024" height="1024" />
       </a>
       <div width="1024" height="1024" v-else>
-        Image {{ selectedName }} could not be processed. The corresponding error is:
+        Image {{ ResConImgName!.replace(/\.[^/.]+$/, "") }} could not be processed. The corresponding error is:
         <object :data="visImgSrc" alt="" >
           Could not read the error message.
         </object>          
       </div>
-      Image {{ store.task?.visualization_sources }}
     </div>
   </div>
 </template>

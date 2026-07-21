@@ -4,11 +4,25 @@ import { useTaskStore } from '../../stores/task'
 import type { Tubule } from '../../classes/Task'
 
 const store = useTaskStore()
-const task = computed(() => store.task)
+
+let idx = computed(() => store.selectedImageIndex)
+let ConvImageName = computed(() => store.task?.imageconversion_filenames?.[idx.value]!)
+
+let newIdx = computed(() => {
+    for (var ending of [".png", ".tif", ".tiff", ".jpg", ".jpeg"]) {
+      let i = store.task?.image_filenames.indexOf((ConvImageName!.value).replace(/\.[^/.]+$/, ending))!
+      if (i !== -1) {
+        return i
+      }
+    }
+    return 0
+  })
+
 const selectedImageFilename = computed(
-  () => store.task?.image_filenames?.[store.selectedImageIndex]
+  () => store.task?.image_filenames?.[newIdx.value]
 )
 
+const task = computed(() => store.task)
 const tubules = computed(() => {
   if (selectedImageFilename.value !== undefined) {
     return task.value?.results?.[selectedImageFilename.value]?.tubules
@@ -68,7 +82,6 @@ export default {
 <template>
   <div class="tubule-data-tables">
     <!-- <h2>Tubule Data</h2> -->
-
     <div class="tubule-table" v-for="tub in tubuleObjects" :key="tub.id">
       <h3 class="font-bold">Tubule {{ tub.id }}: {{ tub.class }}</h3>
 

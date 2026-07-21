@@ -5,8 +5,21 @@ import type { Tubule } from '../../classes/Task'
 
 const store = useTaskStore()
 
+let idx = computed(() => store.selectedImageIndex)
+let ConvImageName = computed(() => store.task?.imageconversion_filenames?.[idx.value]!)
+
+let newIdx = computed(() => {
+    for (var ending of [".png", ".tif", ".tiff", ".jpg", ".jpeg"]) {
+      let i = store.task?.image_filenames.indexOf((ConvImageName!.value).replace(/\.[^/.]+$/, ending))!
+      if (i !== -1) {
+        return i
+      }
+    }
+    return 0
+  })
+
 const selectedImageFilename = computed(
-  () => store.task?.image_filenames?.[store.selectedImageIndex]
+  () => store.task?.image_filenames?.[newIdx.value]
 )
 
 const task = computed(() => store.task)
