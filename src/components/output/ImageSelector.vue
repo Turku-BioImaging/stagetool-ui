@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { Task } from '../../classes/Task'
 import { useTaskStore } from '../../stores/task'
 
 const taskStore = useTaskStore()
+taskStore.setCorrespImageIndex(taskStore.task?.imageconversion_filenames?.[0]!)
 
-const handleClick = (idx: number) => {
+const handleClick = (idx: number, thisName: any) => {
   taskStore.setSelectedImageIndex(idx)
+  taskStore.setCorrespImageIndex(thisName)
 }
 </script>
 <script lang="ts">
@@ -20,12 +21,12 @@ export default {
       <div
         class="image-item"
         v-for="(imgSrc, idx) in taskStore.task.imageconversion_sources"
-        @click="handleClick(idx)"
+        @click="handleClick(idx, taskStore.task.imageconversion_filenames?.[idx])"
         :key="idx"
       >
         <img :src="imgSrc" alt="" width="256" height="256"/>
         <p class="mt-2 font-semibold text-xs text-center">
-          {{ taskStore.task?.imageconversion_filenames?.[idx].replace(/\.[^/.]+$/, "") }}
+          {{ taskStore.task?.visualization_filenames?.[taskStore.getCorrespImageIndex(taskStore.task?.imageconversion_filenames?.[idx]!)] }}
         </p>
       </div>
     </div>

@@ -6,6 +6,7 @@ export const useTaskStore = defineStore('taskStore', () => {
   // state
   const task = ref<Task | null>(null)
   const selectedImageIndex = ref<number>(0)
+  const selectedCorrespImageIndex = ref<number>(0)
 
   // actions
   const setTask = (newTask: Task) => {
@@ -20,11 +21,35 @@ export const useTaskStore = defineStore('taskStore', () => {
     task.value = null
   }
 
+  function setCorrespImageIndex(imgConvName: string) {
+    for (var ending of [".png", ".tif", ".tiff", ".jpg", ".jpeg"]) {
+      let i = task?.value!.image_filenames.indexOf((imgConvName).replace(/\.[^/.]+$/, ending))!
+      if (i !== -1) {
+        selectedCorrespImageIndex.value = i
+        return
+      }
+    }
+    selectedCorrespImageIndex.value = -1
+  }
+
+  function getCorrespImageIndex(imgConvName: string) {
+    for (var ending of [".png", ".tif", ".tiff", ".jpg", ".jpeg"]) {
+      let i = task?.value!.image_filenames.indexOf((imgConvName).replace(/\.[^/.]+$/, ending))!
+      if (i !== -1) {
+        return i
+      }
+    }
+    return -1
+  }
+
   return {
     task,
     setTask,
     clearTask,
     selectedImageIndex,
-    setSelectedImageIndex
+    setSelectedImageIndex,
+    setCorrespImageIndex,
+    getCorrespImageIndex,
+    selectedCorrespImageIndex
   }
 })
