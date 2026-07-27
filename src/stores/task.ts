@@ -42,6 +42,20 @@ export const useTaskStore = defineStore('taskStore', () => {
     return -1
   }
 
+  function getCorrespVisIndex(imgConvName: string) {
+    let i = task?.value!.visualization_filenames!.indexOf((imgConvName).replace(/\.[^/.]+$/, "_error.txt"))
+    if (i !== -1) {
+          return i
+    }
+      for (var ending of [".png", ".tif", ".tiff", ".jpg", ".jpeg"]) {
+        i = task?.value!.visualization_filenames!.indexOf((imgConvName).replace(/\.[^/.]+$/, ending))!
+        if (i !== -1) {
+          return i
+        }
+      }
+      return i
+    }
+
   return {
     task,
     setTask,
@@ -50,6 +64,7 @@ export const useTaskStore = defineStore('taskStore', () => {
     setSelectedImageIndex,
     setCorrespImageIndex,
     getCorrespImageIndex,
-    selectedCorrespImageIndex
+    selectedCorrespImageIndex,
+    getCorrespVisIndex
   }
 })

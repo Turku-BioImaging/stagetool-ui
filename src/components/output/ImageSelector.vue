@@ -26,7 +26,7 @@ export default {
       >
         <img :src="imgSrc" alt="" width="256" height="256"/>
         <p class="mt-2 font-semibold text-xs text-center">
-          {{ taskStore.task?.visualization_filenames?.[taskStore.getCorrespImageIndex(taskStore.task?.imageconversion_filenames?.[idx]!)] }}
+          {{ taskStore.task?.image_filenames?.[taskStore.getCorrespImageIndex(taskStore.task?.imageconversion_filenames?.[idx]!)] }}
         </p>
       </div>
     </div>
