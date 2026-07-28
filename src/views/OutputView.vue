@@ -12,7 +12,7 @@ import ErrorMessageViewer from '@/components/output/ErrorMessageViewer.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const store = useTaskStore()
-
+window.scrollTo(0,0)
 /* const valid = computed(() => {
   if (store.task?.visualization_sources && (store.task?.visualization_sources?.length < store.task?.image_filenames?.length*2)) {
     return false
