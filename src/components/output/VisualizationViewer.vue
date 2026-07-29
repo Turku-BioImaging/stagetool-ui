@@ -5,16 +5,16 @@ import { useTaskStore } from '../../stores/task'
 const store = useTaskStore()
 let idx = computed(() => store.selectedImageIndex)
 
-let imgConvName = computed(() => store.task?.imageconversion_filenames?.[idx.value]!)
+let imgConvName = computed(() => store.task?.image_conversion_filenames?.[idx.value]!)
 
 
 let newVisIdx = computed(() => store.getCorrespVisIndex(imgConvName.value))
-let newResIdx = computed(() => store.task?.resultconversion_filenames?.indexOf(imgConvName!.value)!)
+let newResIdx = computed(() => store.task?.result_conversion_filenames?.indexOf(imgConvName!.value)!)
 
 let visImgSrc = computed(() => store.task?.visualization_sources?.[newVisIdx.value])
 let outName = computed(() => store.task?.visualization_filenames?.[newVisIdx.value])
 
-let ResConImgSrc = computed(() => store.task?.resultconversion_sources?.[newResIdx.value])
+let ResConImgSrc = computed(() => store.task?.result_conversion_sources?.[newResIdx.value])
 
 </script>
 

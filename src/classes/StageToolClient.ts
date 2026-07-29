@@ -56,7 +56,7 @@ export class StageToolClient {
 
   static async getResultConversions(taskId: string, filename: string): Promise<AxiosResponse> {
     const baseUrl = import.meta.env.VITE_API_BASE_URL
-    const response: AxiosResponse = await axios.get(`${baseUrl}/resultconversions`, {
+    const response: AxiosResponse = await axios.get(`${baseUrl}/result-conversions`, {
       params: {
         task_id: taskId,
         filename: filename
@@ -69,7 +69,7 @@ export class StageToolClient {
 
   static async getImageConversions(taskId: string, filename: string): Promise<AxiosResponse> {
     const baseUrl = import.meta.env.VITE_API_BASE_URL
-    const response: AxiosResponse = await axios.get(`${baseUrl}/imageconversions`, {
+    const response: AxiosResponse = await axios.get(`${baseUrl}/image-conversions`, {
       params: {
         task_id: taskId,
         filename: filename

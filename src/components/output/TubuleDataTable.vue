@@ -6,7 +6,7 @@ import type { Tubule } from '../../classes/Task'
 const store = useTaskStore()
 
 let idx = computed(() => store.selectedImageIndex)
-let ConvImageName = computed(() => store.task?.imageconversion_filenames?.[idx.value]!)
+let ConvImageName = computed(() => store.task?.image_conversion_filenames?.[idx.value]!)
 
 let newIdx = computed(() => store.selectedCorrespImageIndex)
 
