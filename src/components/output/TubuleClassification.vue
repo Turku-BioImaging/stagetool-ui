@@ -5,8 +5,10 @@ import type { Tubule } from '../../classes/Task'
 
 const store = useTaskStore()
 
+let newIdx = computed(() => store.selectedCorrespImageIndex)
+
 const selectedImageFilename = computed(
-  () => store.task?.image_filenames?.[store.selectedImageIndex]
+  () => store.task?.image_filenames?.[newIdx.value]
 )
 
 const task = computed(() => store.task)

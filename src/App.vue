@@ -20,13 +20,7 @@ export default {
       const isScrolled = window.scrollY < 400
       const isPageShort = document.documentElement.scrollHeight <= window.innerHeight
 
-      if (isHomePage == true) {
-        if (isScrolled || isPageShort) {
-          this.navbarIsVisible = false
-        } else {
-          this.navbarIsVisible = true
-        }
-      }
+      this.navbarIsVisible = true
     }
   },
   mounted() {

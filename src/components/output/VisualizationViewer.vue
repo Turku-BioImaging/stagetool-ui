@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed, inject } from 'vue'
+import { computed } from 'vue'
 import { useTaskStore } from '../../stores/task'
 
 const store = useTaskStore()
+let idx = computed(() => store.selectedImageIndex)
 
-let visImgSrc = computed(() => store.task?.visualization_sources?.[store.selectedImageIndex])
-let len = computed(() => store.task?.visualization_sources.length || 0 )
+let imgConvName = computed(() => store.task?.image_conversion_filenames?.[idx.value]!)
+
+
+let newVisIdx = computed(() => store.getCorrespVisIndex(imgConvName.value))
+let newResIdx = computed(() => store.task?.result_conversion_filenames?.indexOf(imgConvName!.value)!)
+
+let visImgSrc = computed(() => store.task?.visualization_sources?.[newVisIdx.value])
+let outName = computed(() => store.task?.visualization_filenames?.[newVisIdx.value])
+
+let ResConImgSrc = computed(() => store.task?.result_conversion_sources?.[newResIdx.value])
+
 </script>
 
 <script lang="ts">
@@ -16,21 +26,16 @@ export default {
 
 <template>
   <div class="grid grid-cols-3 gap-2">
-    <template v-for="n in len" :key="n">
-      <div class="vis-viewer-component" style="display: inline-block" v-if="!store.task?.visualization_filenames?.[n-1].startsWith('pred_')">
-        <a :download="['result', store.task?.visualization_filenames?.[n-1]].join('-')" :href=store.task?.visualization_sources?.[n-1] style="width: 100%" v-if="!store.task?.visualization_filenames?.[n-1].endsWith('error.txt')">
-          <img :src="store.task?.visualization_sources?.[n-1]" alt="" width="1024" height="1024"/>
-          <p class="mt-2 font-semibold text-xs text-center">
-            {{ ['result', store.task?.visualization_filenames?.[n-1]].join('-') }}
-          </p>
-        </a>
-        <div width="1024" height="1024" v-else>
-          Image {{ store.task?.visualization_filenames?.[n-1] }} could not be processed. The corresponding error is:
-          <object :data="store.task?.visualization_sources?.[n-1]" alt="" >
-            Could not read the error message.
-          </object>
-        </div>
+    <div class="vis-viewer-component" style="display: inline-block" >
+      <a :download="['result', outName].join('-')" :href=visImgSrc style="width: 100%" v-if="!outName?.endsWith('error.txt')">
+        <img :src="ResConImgSrc" alt="" width="1024" height="1024" />
+      </a>
+      <div width="1024" height="1024" v-else>
+        Image {{ imgConvName!.replace(/\.[^/.]+$/, "") }} could not be processed. The corresponding error is:
+        <object :data="visImgSrc" alt="" >
+          Could not read the error message.
+        </object>  
       </div>
-    </template>
+    </div>
   </div>
 </template>

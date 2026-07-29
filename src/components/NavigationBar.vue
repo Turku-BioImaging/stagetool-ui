@@ -6,10 +6,10 @@
           <h1><a href="/">StageTool</a></h1>
           <ul>
             <li>
-              <router-link to="/what-is-stagetool">About StageTool</router-link>
+              <a href="/what-is-stagetool">About StageTool</a>
             </li>
             <li>
-              <router-link to="/models">Models</router-link>
+              <a href="/models">Models</a>
             </li>
             <!-- <li><router-link to="/cell-model">Cell Model</router-link></li>
             <li>
@@ -19,10 +19,10 @@
               <router-link to="/troubleshooting">Troubleshooting</router-link>
             </li> -->
             <li>
-              <router-link to="/developers-and-funding">Developers &amp; Funding</router-link>
+              <a href="/Tutorial-and-help">Tutorial &amp; Help</a>
             </li>
             <li>
-              <router-link to="/Tutorial-and-help">Tutorial &amp; Help</router-link>
+              <a href="/developers-and-funding">Developers &amp; Funding</a>
             </li>
           </ul>
         </div>
