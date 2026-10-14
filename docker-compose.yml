@@ -2,5 +2,6 @@ version: '3.8'
 services:
   stagetool-ui:
     image: stagetool-ui:latest
+    restart: unless-stopped
     ports:
       - '5665:80'
